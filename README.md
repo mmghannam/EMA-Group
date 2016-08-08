@@ -1,5 +1,7 @@
 # EMA-Group
 
+Run 'bundle install' , 'rake db:create' and 'rake db:migrate' on the first time.
+
 == README
 
 This README would normally document whatever steps are necessary to get the

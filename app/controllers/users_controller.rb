@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @user.position = 1
 
     respond_to do |format|
       if @user.save
@@ -69,6 +70,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:type, :name, :address, :landline_number, :mobile_number, :workplace)
+      params.require(:user).permit(:name, :address, :landline_number, :mobile_number, :workplace)
     end
 end

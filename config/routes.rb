@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-
+  root 'categories#index'
+  devise_for :users
   resources :users
   resources :categories
   resources :products

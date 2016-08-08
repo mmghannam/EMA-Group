@@ -40,3 +40,12 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp
+
+# Ignore ruby mine files
+.idea/
+/log

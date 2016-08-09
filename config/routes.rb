@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   root 'categories#index'
+
+  get 'categories/subcategories' => 'categories#subcategories'
+
   devise_for :users
   resources :users
   resources :categories

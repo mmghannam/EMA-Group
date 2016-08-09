@@ -4,9 +4,12 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.where(parent_id: nil)
   end
 
+  def subcategories
+    @categories = Category.where(parent_id: params['parent_id'])
+  end
   # GET /categories/1
   # GET /categories/1.json
   def show

@@ -17,6 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 #add login system
 gem 'devise'
 
+
 #bootstrap automatic gems
 gem 'therubyracer'
 gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS

@@ -65,13 +65,13 @@ class CategoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_category
+  # Use callbacks to share common setup or constraints between actions.
+  def set_category
       @category = Category.find(params[:id])
-    end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def category_params
-      params.require(:category).permit(:parent_id, :name, :comments)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def category_params
+      params.require(:category).permit(:parent_id, :name, :comments, :photo)
+  end
 end

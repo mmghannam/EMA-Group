@@ -9,7 +9,7 @@
       <th><%= model_class.human_attribute_name(:parent_id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:comments) %></th>
-      <!--<th><%= model_class.human_attribute_name(:created_at) %></th>-->
+      <th><%= model_class.human_attribute_name(:photo) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -20,7 +20,7 @@
         <td><%= category.parent_id %></td>
         <td><%= category.name %></td>
         <td><%= category.comments %></td>
-        <!--<td><%=l category.created_at %></td>-->
+        <td><%= category.photo_file_name %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_category_path(category), :class => 'btn btn-default btn-xs' %>

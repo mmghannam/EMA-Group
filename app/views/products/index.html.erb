@@ -11,7 +11,7 @@
       <th><%= model_class.human_attribute_name(:price_pharmacy) %></th>
       <th><%= model_class.human_attribute_name(:price_population) %></th>
       <th><%= model_class.human_attribute_name(:comments) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:photo) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -24,7 +24,7 @@
         <td><%= product.price_pharmacy %></td>
         <td><%= product.price_population %></td>
         <td><%= product.comments %></td>
-        <td><%=l product.created_at %></td>
+        <td><%= product.photo_file_name %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_product_path(product), :class => 'btn btn-default btn-xs' %>

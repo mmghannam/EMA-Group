@@ -14,13 +14,18 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-#add login system
+# Use paperclip for file uploads
+gem 'paperclip'
+
+# Use devise authentication system
 gem 'devise'
 
-#bootstrap automatic gems
+# Use automatic bootstrap styling
 gem 'therubyracer'
 gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'twitter-bootstrap-rails'
+
+gem 'sprockets', '3.6.3'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

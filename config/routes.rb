@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'client/dashboard'
+
+  get 'admin/dashboard'
+
   root 'categories#index'
 
   get 'categories/subcategories' => 'categories#subcategories'

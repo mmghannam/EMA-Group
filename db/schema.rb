@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20160809205114) do
   create_table "products", force: :cascade do |t|
     t.integer  "category_id",        limit: 4
     t.string   "name",               limit: 255
-    t.decimal  "price_pharmacy",                   precision: 10
-    t.decimal  "price_population",                 precision: 10
+    t.decimal "price_pharmacy", precision: 10, scale: 6
+    t.decimal "price_population", precision: 10, scale: 6
     t.text     "comments",           limit: 65535
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false

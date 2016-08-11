@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
     get 'admin/dashboard', :as => :admin_dashboard
 
-    root 'categories#index'
+    root 'categories#index', :as => :root
 
-    get 'categories/subcategories' => 'categories#subcategories'
+    get 'categories/subcategories' => 'categories#subcategories', :as => :subcategories
 
     devise_for :users
     resources :users

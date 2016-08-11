@@ -19,7 +19,7 @@
     <div class="form-group">
       <%= f.label :category_id, :class => 'control-label col-lg-2' %>
       <div class="col-lg-9">
-        <%= f.label :category_id, Category.find(params[:category_id]).name, :class => 'control-label col-lg-2' %>
+        <%= f.label :category_id, Category.find(params[:category_id]).name, :class => 'control-label' %>
         <%= f.hidden_field :category_id,value: params[:category_id] %>
       </div>
       <%= f.error_span(:category_id) %>

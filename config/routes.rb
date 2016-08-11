@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
+    root 'categories#index', :as => :root
+
     get 'client/dashboard', :as => :client_dashboard
 
     get 'admin/dashboard', :as => :admin_dashboard
-
-    root 'categories#index', :as => :root
 
     get 'categories/subcategories' => 'categories#subcategories', :as => :subcategories
 

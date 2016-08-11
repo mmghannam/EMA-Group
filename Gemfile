@@ -27,6 +27,7 @@ gem 'twitter-bootstrap-rails'
 
 # Use bootstrap sass styling gem
 gem 'bootstrap-sass'
+gem "bootstrap-sass-rails"
 
 gem 'sprockets', '3.6.3'
 

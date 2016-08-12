@@ -1,48 +1,51 @@
 <%- model_class = Category -%>
 <div class="page-header">
-  <h1><%= t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+    <h1><%= t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 <table class="table table-striped">
-  <thead>
+    <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:parent_id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:comments) %></th>
-      <th><%= model_class.human_attribute_name(:photo) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        <th><%= model_class.human_attribute_name(:id) %></th>
+        <th><%= model_class.human_attribute_name(:parent_id) %></th>
+        <th><%= model_class.human_attribute_name(:name) %></th>
+        <th><%= model_class.human_attribute_name(:comments) %></th>
+        <th><%= model_class.human_attribute_name(:photo) %></th>
+        <th><%= t '.actions', :default => t("helpers.actions") %></th>
     </tr>
-  </thead>
-  <tbody>
-  <% @categories.each do |category| %>
-      <tr>
-        <td><%= link_to category.id, category_path(category) %></td>
-
-        <td><%= category.parent_id ? Category.find(category.parent_id).name : '' %></td>
-        <td><%= link_to category.name, {controller: 'categories', action: 'subcategories', parent_id: category.id} %></td>
-        <td><%= category.comments %></td>
-        <td><%= category.photo_file_name %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_category_path(category), :class => 'btn btn-default btn-xs' %>
-          <%= link_to 'Subcategories', {controller: 'categories', action: 'subcategories', parent_id: category.id}, {class: 'btn btn-xs btn-default'} %>
-          <%= link_to 'Add Product', {controller: 'products', action: 'new', category_id: category.id}, {class: 'btn
+    </thead>
+    <tbody>
+    <% @categories.each do |category| %>
+        <tr>
+            <td><%= link_to category.id, category_path(category) %></td>
+            <% if category.parent_id != nil %>
+                <td><%= category.parent_id ? Category.find(category.parent_id).name : '' %></td>
+            <% else %>
+                <td></td>
+            <% end %>
+            <td><%= link_to category.name, {controller: 'categories', action: 'subcategories', parent_id: category.id} %></td>
+            <td><%= category.comments %></td>
+            <td><%= category.photo_file_name %></td>
+            <td>
+                <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                    edit_category_path(category), :class => 'btn btn-default btn-xs' %>
+                <%= link_to 'Subcategories', {controller: 'categories', action: 'subcategories', parent_id: category.id}, {class: 'btn btn-xs btn-default'} %>
+                <%= link_to 'Add Product', {controller: 'products', action: 'new', category_id: category.id}, {class: 'btn
           btn-xs btn-default'} %>
-          <%= link_to 'Products', {controller: 'products', action: 'index', category_id: category.id}, {class: 'btn
+                <%= link_to 'Products', {controller: 'products', action: 'index', category_id: category.id}, {class: 'btn
           btn-xs btn-default'} %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      category_path(category),
-                      :method => :delete,
-                      :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
-                      :class => 'btn btn-xs btn-danger' %>
+                <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                    category_path(category),
+                    :method => :delete,
+                    :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                    :class => 'btn btn-xs btn-danger' %>
 
 
-        </td>
-      </tr>
-  <% end %>
-  </tbody>
+            </td>
+        </tr>
+    <% end %>
+    </tbody>
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_category_path,
-            :class => 'btn btn-primary' %>
+    new_category_path,
+    :class => 'btn btn-primary' %>

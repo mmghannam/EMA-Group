@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :offers
     root 'categories#index', :as => :root
 
     get 'client/dashboard', :as => :client_dashboard

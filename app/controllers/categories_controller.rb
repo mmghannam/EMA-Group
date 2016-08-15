@@ -4,6 +4,11 @@ class CategoriesController < ApplicationController
     # GET /categories
     # GET /categories.json
     def index
+        # client shouldn't access 'admin/categories'
+        if current_user and current_user.position != 'admin' and request.original_url.include? '/admin/'
+            redirect_to '/categories'
+        end
+
         @categories = Category.where(parent_id: nil)
     end
 

@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
-
     root 'client#default', :as => :root
 
     get 'client/dashboard', :as => :client_dashboard
 
     get 'admin/dashboard', :as => :admin_dashboard
+
+    scope '/admin' do
+        resources :categories, :products
+    end
 
     get 'categories/subcategories' => 'categories#subcategories', :as => :subcategories
 

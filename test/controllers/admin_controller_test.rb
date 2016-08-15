@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class AdminControllerTest < ActionController::TestCase
-  test "should get dashboard" do
-    get :dashboard
+  test "should get default" do
+    get :default
     assert_response :success
   end
 

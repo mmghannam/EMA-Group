@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :offers
-    root 'categories#index', :as => :root
+
+    root 'client#default', :as => :root
 
     get 'client/dashboard', :as => :client_dashboard
 
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'categories/subcategories' => 'categories#subcategories', :as => :subcategories
 
     devise_for :users
+    resources :offers
     resources :users
     resources :categories
     resources :products

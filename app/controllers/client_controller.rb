@@ -1,4 +1,4 @@
 class ClientController < ApplicationController
-  def dashboard
+  def default
   end
 end

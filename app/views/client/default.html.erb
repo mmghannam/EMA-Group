@@ -1,316 +1,264 @@
-
-<section id="main-slider" class="carousel">
-  <div class="carousel-inner">
-    <% Offer.all.each do |offer| %>
-        <div class="item <%= offer == Offer.first ? 'active' : '' %>">
-          <div class="container">
-            <div class="carousel-content">
-              <h1><%= offer.title %></h1>
-              <p class="lead"><%= offer.description %></p>
-            </div>
-          </div>
-        </div><!--/.item-->
-    <% end %>
-  </div><!--/.item-->
-  </div><!--/.carousel-inner-->
-  <a class="prev" href="#main-slider" data-slide="prev"><i class="icon-angle-left"></i></a>
-  <a class="next" href="#main-slider" data-slide="next"><i class="icon-angle-right"></i></a>
-</section><!--/#main-slider-->
-
-<section id="services">
+<div class="banner">
   <div class="container">
-    <div class="box first">
-      <div class="row">
-        <div class="col-md-4 col-sm-6">
-          <div class="center">
-            <i class="icon-apple icon-md icon-color1"></i>
-            <h4>iOS development</h4>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-              tortor quam, feugiat vitae.</p>
-          </div>
-        </div><!--/.col-md-4-->
-        <div class="col-md-4 col-sm-6">
-          <div class="center">
-            <i class="icon-android icon-md icon-color2"></i>
-            <h4>Android development</h4>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-              tortor quam, feugiat vitae.</p>
-          </div>
-        </div><!--/.col-md-4-->
-        <div class="col-md-4 col-sm-6">
-          <div class="center">
-            <i class="icon-windows icon-md icon-color3"></i>
-            <h4>Windows Phone development</h4>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-              tortor quam, feugiat vitae.</p>
-          </div>
-        </div><!--/.col-md-4-->
-        <div class="col-md-4 col-sm-6">
-          <div class="center">
-            <i class="icon-html5 icon-md icon-color4"></i>
-            <h4>Ruby on Rails development</h4>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-              tortor quam, feugiat vitae.</p>
-          </div>
-        </div><!--/.col-md-4-->
-        <div class="col-md-4 col-sm-6">
-          <div class="center">
-            <i class="icon-css3 icon-md icon-color5"></i>
-            <h4>Javascript development</h4>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-              tortor quam, feugiat vitae.</p>
-          </div>
-        </div><!--/.col-md-4-->
-        <div class="col-md-4 col-sm-6">
-          <div class="center">
-            <i class="icon-thumbs-up icon-md icon-color6"></i>
-            <h4>Responsive web design</h4>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-              tortor quam, feugiat vitae.</p>
-          </div>
-        </div><!--/.col-md-4-->
-      </div><!--/.row-->
-    </div><!--/.box-->
-  </div><!--/.container-->
-</section><!--/#services-->
-
-<section id="portfolio">
+  </div>
+</div>
+<!---->
+<div class="welcome">
   <div class="container">
-    <div class="box">
-      <div class="center gap">
-        <h2>Portfolio</h2>
-        <p class="lead">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac<br>turpis egestas.
-          Vestibulum tortor quam, feugiat vitae.</p>
-      </div><!--/.center-->
-      <ul class="portfolio-filter">
-        <li><a class="btn btn-primary active" href="#" data-filter="*">All</a></li>
-        <li><a class="btn btn-primary" href="#" data-filter=".bootstrap">Bootstrap</a></li>
-        <li><a class="btn btn-primary" href="#" data-filter=".html">HTML</a></li>
-        <li><a class="btn btn-primary" href="#" data-filter=".wordpress">Wordpress</a></li>
-      </ul><!--/#portfolio-filter-->
-      <ul class="portfolio-items col-4">
-        <% Product.all.each do |product| %>
-            <li class="portfolio-item apps">
-              <div class="item-inner" style="border-radius:5px;">
-                <div class="portfolio-image" >
-                  <img src="<%= product.photo_file_name ? product.photo.url : 'images/medicine-pill.png' %>"
-                       alt="" >
-                  <div class="overlay">
-                    <a class="preview btn btn-danger" title="<%= product.name %>"
-                       href="<%= product.photo_file_name ? product.photo.url : 'images/medicine-pill.png' %>"><i class="icon-eye-open"></i></a>
-                  </div>
-                </div>
-                <h5><%= product.name %></h5>
-              </div>
-            </li><!--/.portfolio-item-->
-        <% end %>
-      </ul>
-    </div><!--/.box-->
-  </div><!--/.container-->
-</section><!--/#portfolio-->
+    <div class="col-md-4"></div>
+    <div class="col-md-8 welcome-left">
+      <h2>Welcome to our site</h2>
+    </div>
 
-<section id="pricing">
+  </div>
+</div>
+<!---->
+<div class="featured">
   <div class="container">
-    <div class="box">
-      <div class="center">
-        <h2>See our Pricings</h2>
-        <p class="lead">Pellentesque habitant morbi tristique senectus et netus et <br>malesuada fames ac turpis
-          egestas.</p>
-      </div><!--/.center-->
-      <div class="big-gap"></div>
-      <div id="pricing-table" class="row">
-        <div class="col-sm-4">
-          <ul class="plan">
-            <li class="plan-name">Basic</li>
-            <li class="plan-price">$29</li>
-            <li>5GB Storage</li>
-            <li>1GB RAM</li>
-            <li>400GB Bandwidth</li>
-            <li>10 Email Address</li>
-            <li>Forum Support</li>
-            <li class="plan-action"><a href="#" class="btn btn-primary btn-lg">Signup</a></li>
-          </ul>
-        </div><!--/.col-sm-4-->
-        <div class="col-sm-4">
-          <ul class="plan featured">
-            <li class="plan-name">Standard</li>
-            <li class="plan-price">$49</li>
-            <li>10GB Storage</li>
-            <li>2GB RAM</li>
-            <li>1TB Bandwidth</li>
-            <li>100 Email Address</li>
-            <li>Forum Support</li>
-            <li class="plan-action"><a href="#" class="btn btn-primary btn-lg">Signup</a></li>
-          </ul>
-        </div><!--/.col-sm-4-->
-        <div class="col-sm-4">
-          <ul class="plan">
-            <li class="plan-name">Advanced</li>
-            <li class="plan-price">$199</li>
-            <li>30GB Storage</li>
-            <li>5GB RAM</li>
-            <li>5TB Bandwidth</li>
-            <li>1000 Email Address</li>
-            <li>Forum Support</li>
-            <li class="plan-action"><a href="#" class="btn btn-primary btn-lg">Signup</a></li>
-          </ul>
-        </div><!--/.col-sm-4-->
+    <h3>Featured Products</h3>
+    <div class="feature-grids">
+      <div class="col-md-3 feature-grid jewel">
+        <a href="product.html"><img src="/client/images/f1.jpg" alt=""/>
+          <div class="arrival-info">
+            <h4>Jewellerys #1</h4>
+            <p>Rs 12000</p>
+            <span class="pric1"><del>Rs 18000</del></span>
+            <span class="disc">[12% Off]</span>
+          </div>
+          <div class="viw">
+            <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</a>
+          </div>
+          <div class="shrt">
+            <a href="product.html"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Shortlist</a>
+          </div></a>
       </div>
+      <div class="col-md-3 feature-grid">
+        <a href="product.html"><img src="/client/images/f2.jpg" alt=""/>
+          <div class="arrival-info">
+            <h4>Jewellerys #1</h4>
+            <p>Rs 68000</p>
+            <span class="pric1"><del>Rs 70000</del></span>
+            <span class="disc">[10% Off]</span>
+          </div>
+          <div class="viw">
+            <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</a>
+          </div>
+          <div class="shrt">
+            <a href="product.html"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Shortlist</a>
+          </div></a>
+      </div>
+      <div class="col-md-3 feature-grid jewel">
+        <a href="product.html"><img src="/client/images/f3.jpg" alt=""/>
+          <div class="arrival-info">
+            <h4>Wedding Ceramic Pot </h4>
+            <p>Rs 1200</p>
+            <span class="pric1"><del>Rs 2000</del></span>
+            <span class="disc">[10% Off]</span>
+          </div>
+          <div class="viw">
+            <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</a>
+          </div>
+          <div class="shrt">
+            <a href="product.html"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Shortlist</a>
+          </div></a>
+      </div>
+      <div class="col-md-3 feature-grid">
+        <a href="product.html"><img src="/client/images/f4.jpg" alt=""/>
+          <div class="arrival-info">
+            <h4>Jewellerys #1</h4>
+            <p>Rs 12000</p>
+            <span class="pric1"><del>Rs 18000</del></span>
+            <span class="disc">[12% Off]</span>
+          </div>
+          <div class="viw">
+            <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</a>
+          </div>
+          <div class="shrt">
+            <a href="product.html"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Shortlist</a>
+          </div></a>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="feature-grids">
+      <div class="col-md-3 feature-grid jewel">
+        <a href="product.html"><img src="/client/images/p7.jpg" alt=""/>
+          <div class="arrival-info">
+            <h4>Jewellerys #1</h4>
+            <p>Rs 12000</p>
+            <span class="pric1"><del>Rs 18000</del></span>
+            <span class="disc">[12% Off]</span>
+          </div>
+          <div class="viw">
+            <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</a>
+          </div>
+          <div class="shrt">
+            <a href="product.html"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Shortlist</a>
+          </div></a>
+      </div>
+      <div class="col-md-3 feature-grid">
+        <a href="product.html"><img src="/client/images/p11.jpg" alt=""/>
+          <div class="arrival-info">
+            <h4>Jewellerys #1</h4>
+            <p>Rs 12000</p>
+            <span class="pric1"><del>Rs 18000</del></span>
+            <span class="disc">[12% Off]</span>
+          </div>
+          <div class="viw">
+            <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</a>
+          </div>
+          <div class="shrt">
+            <a href="product.html"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Shortlist</a>
+          </div></a>
+      </div>
+      <div class="col-md-3 feature-grid jewel">
+        <a href="product.html"><img src="/client/images/p12.jpg" alt=""/>
+          <div class="arrival-info">
+            <h4>Jewellerys #1</h4>
+            <p>Rs 12000</p>
+            <span class="pric1"><del>Rs 18000</del></span>
+            <span class="disc">[12% Off]</span>
+          </div>
+          <div class="viw">
+            <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</a>
+          </div>
+          <div class="shrt">
+            <a href="product.html"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Shortlist</a>
+          </div></a>
+      </div>
+      <div class="col-md-3 feature-grid">
+        <a href="product.html"><img src="/client/images/f2.jpg" alt=""/>
+          <div class="arrival-info">
+            <h4>Jewellerys #1</h4>
+            <p>Rs 12000</p>
+            <span class="pric1"><del>Rs 18000</del></span>
+            <span class="disc">[12% Off]</span>
+          </div>
+          <div class="viw">
+            <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</a>
+          </div>
+          <div class="shrt">
+            <a href="product.html"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Shortlist</a>
+          </div></a>
+      </div>
+      <div class="clearfix"></div>
     </div>
   </div>
-</section><!--/#pricing-->
-
-<section id="about-us">
+</div>
+<!---->
+<div class="arrivals">
   <div class="container">
-    <div class="box">
-      <div class="center">
-        <h2>Meet the Team</h2>
-        <p class="lead">Pellentesque habitant morbi tristique senectus et netus et<br>malesuada fames ac turpis egestas.
-        </p>
+    <h3>New Arrivals</h3>
+    <div class="arrival-grids">
+      <ul id="flexiselDemo1">
+        <li>
+          <a href="product.html"><img src="/client/images/a1.jpg" alt=""/>
+            <div class="arrival-info">
+              <h4>Fusion Black Polyester Suits</h4>
+              <p>Rs 12000</p>
+              <span class="pric1"><del>Rs 18000</del></span>
+              <span class="disc">[12% Off]</span>
+            </div>
+            <div class="viw">
+              <a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</a>
+            </div>
+            <div class="shrt">
+              <a href="#"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Shortlist</a>
+            </div></a>
+        </li>
+        <li>
+          <a href="product.html"><img src="/client/images/a2.jpg" alt=""/>
+            <div class="arrival-info">
+              <h4>Vogue4All White Net Gowns</h4>
+              <p>Rs 14000</p>
+              <span class="pric1"><del>Rs 15000</del></span>
+              <span class="disc">[10% Off]</span>
+            </div>
+            <div class="viw">
+              <a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</a>
+            </div>
+            <div class="shrt">
+              <a href="#"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Shortlist</a>
+            </div></a>
+        </li>
+        <li>
+          <a href="product.html"><img src="/client/images/a3.jpg" alt=""/>
+            <div class="arrival-info">
+              <h4>Platinum Waist Coat Set Navy</h4>
+              <p>Rs 4000</p>
+              <span class="pric1"><del>Rs 8500</del></span>
+              <span class="disc">[45% Off]</span>
+            </div>
+            <div class="viw">
+              <a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</a>
+            </div>
+            <div class="shrt">
+              <a href="#"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Shortlist</a>
+            </div></a>
+        </li>
+        <li>
+          <a href="product.html"> <img src="/client/images/a4.jpg" alt=""/>
+            <div class="arrival-info">
+              <h4>La Fanatise White Net Gowns</h4>
+              <p>Rs 18000</p>
+              <span class="pric1"><del>Rs 21000</del></span>
+              <span class="disc">[8% Off]</span>
+            </div>
+            <div class="viw">
+              <a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</a>
+            </div>
+            <div class="shrt">
+              <a href="#"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Shortlist</a>
+            </div></a>
+        </li>
+      </ul>
+      <script type="text/javascript">
+        $(window).load(function() {
+          $("#flexiselDemo1").flexisel({
+            visibleItems: 4,
+            animationSpeed: 1000,
+            autoPlay: true,
+            autoPlaySpeed: 3000,
+            pauseOnHover:true,
+            enableResponsiveBreakpoints: true,
+            responsiveBreakpoints: {
+              portrait: {
+                changePoint:480,
+                visibleItems: 1
+              },
+              landscape: {
+                changePoint:640,
+                visibleItems: 2
+              },
+              tablet: {
+                changePoint:768,
+                visibleItems: 3
+              }
+            }
+          });
+        });
+      </script>
+      <script type="text/javascript" src="/client/js/jquery.flexisel.js"></script>
+    </div>
+  </div>
+</div>
+<!---->
+<div class="shoping">
+  <div class="container">
+    <div class="shpng-grids">
+      <div class="col-md-4 shpng-grid">
+        <h3>Free Shipping</h3>
+        <p>On Order Over Rs999</p>
       </div>
-      <div class="gap"></div>
-      <div id="team-scroller" class="carousel scale">
-        <div class="carousel-inner">
-          <div class="item active">
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="member">
-                  <p><img class="img-responsive img-thumbnail img-circle" src="images/team1.jpg" alt=""></p>
-                  <h3>Agnes Smith
-                    <small class="designation">CEO &amp; Founder</small>
-                  </h3>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="member">
-                  <p><img class="img-responsive img-thumbnail img-circle" src="images/team2.jpg" alt=""></p>
-                  <h3>Donald Ford
-                    <small class="designation">Senior Vice President</small>
-                  </h3>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="member">
-                  <p><img class="img-responsive img-thumbnail img-circle" src="images/team3.jpg" alt=""></p>
-                  <h3>Karen Richardson
-                    <small class="designation">Assitant Vice President</small>
-                  </h3>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="member">
-                  <p><img class="img-responsive img-thumbnail img-circle" src="images/team3.jpg" alt=""></p>
-                  <h3>David Robbins
-                    <small class="designation">Co-Founder</small>
-                  </h3>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="member">
-                  <p><img class="img-responsive img-thumbnail img-circle" src="images/team1.jpg" alt=""></p>
-                  <h3>Philip Mejia
-                    <small class="designation">Marketing Manager</small>
-                  </h3>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="member">
-                  <p><img class="img-responsive img-thumbnail img-circle" src="images/team2.jpg" alt=""></p>
-                  <h3>Charles Erickson
-                    <small class="designation">Support Manager</small>
-                  </h3>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a class="left-arrow" href="#team-scroller" data-slide="prev">
-          <i class="icon-angle-left icon-4x"></i>
-        </a>
-        <a class="right-arrow" href="#team-scroller" data-slide="next">
-          <i class="icon-angle-right icon-4x"></i>
-        </a>
-      </div><!--/.carousel-->
-    </div><!--/.box-->
-  </div><!--/.container-->
-</section><!--/#about-us-->
-
-<section id="contact">
-  <div class="container">
-    <div class="box last">
-      <div class="row">
-        <div class="col-sm-6">
-          <h1>Contact Form</h1>
-          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-          <div class="status alert alert-success" style="display: none"></div>
-          <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="sendemail.php" role="form">
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input type="text" class="form-control" required="required" placeholder="Name">
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <input type="text" class="form-control" required="required" placeholder="Email address">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="form-group">
-                  <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Message"></textarea>
-                </div>
-                <div class="form-group">
-                  <button type="submit" class="btn btn-danger btn-lg">Send Message</button>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div><!--/.col-sm-6-->
-        <div class="col-sm-6">
-          <h1>Our Address</h1>
-          <div class="row">
-            <div class="col-md-6">
-              <address>
-                <strong>Twitter, Inc.</strong><br>
-                795 Folsom Ave, Suite 600<br>
-                San Francisco, CA 94107<br>
-                <abbr title="Phone">P:</abbr> (123) 456-7890
-              </address>
-            </div>
-            <div class="col-md-6">
-              <address>
-                <strong>Twitter, Inc.</strong><br>
-                795 Folsom Ave, Suite 600<br>
-                San Francisco, CA 94107<br>
-                <abbr title="Phone">P:</abbr> (123) 456-7890
-              </address>
-            </div>
-          </div>
-          <h1>Connect with us</h1>
-          <div class="row">
-            <div class="col-md-6">
-              <ul class="social">
-                <li><a href="#"><i class="icon-facebook icon-social"></i> Facebook</a></li>
-                <li><a href="#"><i class="icon-google-plus icon-social"></i> Google Plus</a></li>
-                <li><a href="#"><i class="icon-pinterest icon-social"></i> Pinterest</a></li>
-              </ul>
-            </div>
-            <div class="col-md-6">
-              <ul class="social">
-                <li><a href="#"><i class="icon-linkedin icon-social"></i> Linkedin</a></li>
-                <li><a href="#"><i class="icon-twitter icon-social"></i> Twitter</a></li>
-                <li><a href="#"><i class="icon-youtube icon-social"></i> Youtube</a></li>
-              </ul>
-            </div>
-          </div>
-        </div><!--/.col-sm-6-->
-      </div><!--/.row-->
-    </div><!--/.box-->
-  </div><!--/.container-->
-</section><!--/#contact-->
+      <div class="col-md-4 shpng-grid">
+        <h3>Order Return</h3>
+        <p>Return Within 14days</p>
+      </div>
+      <div class="col-md-4 shpng-grid">
+        <h3>COD</h3>
+        <p>Cash On Delivery</p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+<!---->

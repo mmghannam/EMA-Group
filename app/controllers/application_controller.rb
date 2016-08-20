@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
     before_action :configure_devise_permitted_parameters, if: :devise_controller?
 
     def after_sign_in_path_for(user)
-        categories_path
+        if user.position == 'admin'
+            :admin_dashboard
+        else
+            :client_dashboard
+        end
     end
 
     protected

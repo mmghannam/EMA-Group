@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'static_pages/contact_us'
+
+  resources :carts
+  resources :orders
     root 'client#default', :as => :root
 
-    get 'client/dashboard', :as => :client_dashboard
+    get 'client/default', :as => :client_dashboard
 
     get 'admin/dashboard', :as => :admin_dashboard
 

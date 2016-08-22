@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'static_pages/contact_us'
-
+  get 'client/single_product'
   resources :carts
   resources :orders
     root 'client#default', :as => :root
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get 'client/default', :as => :client_dashboard
 
     get 'admin/dashboard', :as => :admin_dashboard
-
+    get 'client/products'
     scope '/admin' do
         resources :categories, :products
     end

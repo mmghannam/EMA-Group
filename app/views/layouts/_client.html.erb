@@ -3,8 +3,11 @@
 <head>
   <title>EMAGroup</title>
   <link href="/client/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="/client/js/jquery.min.js"></script>
+  <link href="/client/css/datatables.min.css" rel="stylesheet" type="text/css" media="all"/>
+  <script src='/client/js/datatables.min.js'></script>
   <!-- Custom Theme files -->
   <!--theme-style-->
   <link href="/client/css/style.css" rel="stylesheet" type="text/css" media="all"/>
@@ -12,6 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="keywords" content="EMA group Store"/>
+
   <script type="application/x-javascript"> addEventListener("load", function () {
     setTimeout(hideURLbar, 0);
   }, false);
@@ -43,11 +47,10 @@
       <div class="top_left">
         <ul>
           <% if current_user %>
-              <li class="top_link">Email:<a><%= current_user.email %></a></li>
-              |
-              <li class="top_link"><%= link_to 'My Account', user_path(current_user) %></li>
+              <li class="top_link"><%= 'My Account' %></li>|
+              <li class="top_link"><%= 'Log out' %></li>
           <% else %>
-              <li class="top_link"><%= link_to 'Sign In',new_user_session_path %></li>
+              <li class="top_link"><%= 'Sign In' %></li>
           <% end %>
         </ul>
       </div>
@@ -66,7 +69,7 @@
       <div class="top-nav">
         <ul class="memenu skyblue">
           <li class="active"><a href="/">Home</a></li>
-          <li class="grid"><a href="#">Products</a>
+          <li class="grid"><a href="<%= client_products_path %>">Products</a>
             <div class="mepanel">
               <div class="row">
                 <div class="col1 me-one">

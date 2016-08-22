@@ -2459,3 +2459,7 @@ a.add-cart {
   margin-top: 0;
 }
 }
+
+#products_tbl th {
+	min-width:150px;
+}

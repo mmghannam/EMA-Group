@@ -6,8 +6,11 @@
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="/client/js/jquery.min.js"></script>
-  <link href="/client/css/datatables.min.css" rel="stylesheet" type="text/css" media="all"/>
-  <script src='/client/js/datatables.min.js'></script>
+  <!--<link href="/client/css/datatables.min.css" rel="stylesheet" type="text/css" media="all"/>-->
+  <!--<script src='/client/js/datatables.min.js'></script>-->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.6/jq-2.2.3/dt-1.10.12/datatables.min.css"/>
+
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.6/jq-2.2.3/dt-1.10.12/datatables.min.js"></script>
   <!-- Custom Theme files -->
   <!--theme-style-->
   <link href="/client/css/style.css" rel="stylesheet" type="text/css" media="all"/>
@@ -48,9 +51,9 @@
         <ul>
           <% if current_user %>
               <li class="top_link"><%= 'My Account' %></li>|
-              <li class="top_link"><%= 'Log out' %></li>
+              <li class="top_link"><%= link_to 'Log out', destroy_user_session_path , method: :delete %></li>
           <% else %>
-              <li class="top_link"><%= 'Sign In' %></li>
+              <li class="top_link"><%= link_to 'Sign In',  new_user_session_path %></li>
           <% end %>
         </ul>
       </div>
@@ -69,21 +72,7 @@
       <div class="top-nav">
         <ul class="memenu skyblue">
           <li class="active"><a href="/">Home</a></li>
-          <li class="grid"><a href="<%= client_products_path %>">Products</a>
-            <div class="mepanel">
-              <div class="row">
-                <div class="col1 me-one">
-                  <h4>Categories</h4>
-                  <ul>
-                    <% Category.where(parent_id: nil).each do |cat| %>
-                    <li><%= link_to cat.name,category_path(cat) %></li>
-                    <% end %>
-                  </ul>
-                </div>
-
-              </div>
-            </div>
-          </li>
+          <li class="grid"><a href="<%= client_products_path %>">Products</a></li>
           <li class="grid"><%= link_to 'Offers',offers_path %></li>
           <li class="grid"><%= link_to 'Contact', static_pages_contact_us_path %></li>
         </ul>

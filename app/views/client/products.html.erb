@@ -2,7 +2,7 @@
 <div class="product-model">
   <div class="container">
     <ol class="breadcrumb">
-      <li><a href="index.html">Home</a></li>
+      <li><a href="/">Home</a></li>
       <li class="active">Products</li>
     </ol>
     <h2>Our Products</h2>
@@ -63,7 +63,7 @@
                 </ul>
                 <div class="single-bottom">
                   <% Category.where(parent_id: category.id).each do |child_category| %>
-                      <a href="#"><p><%= child_category.name %></p></a>
+                      <a style="cursor:pointer; text-decoration: none;"><p class="child_category" ><%= child_category.name %></p></a>
                   <% end %>
                 </div>
               </div>
@@ -83,12 +83,17 @@
                     <% else %>
                     $(".tab<%= inner_count %> .single-bottom").hide();
                     <% end %>
-                    $("input[type='search']").val('<%= category.name %>').trigger('search');
 
+                <% inner_count+=1 %>
                 <% end %>
+                $("input[type='search']").val('<%= category.name %>').trigger('search');
               });
               <% outer_count+=1 %>
               <% end %>
+
+              $('.child_category').click(function(){
+                $("input[type='search']").val($(this).html()).trigger('search');
+              });
             });
           </script>
           <!-- script -->
@@ -110,15 +115,18 @@
         });
         $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
 
+      $(document).ready(function(){
+
+            $("#products_tbl").dataTable({
+              lengthMenu: [[4, 8, -1], [5, 10, "All"]]
+            });
+          }
+      );
       });//]]>
-      $("#products_tbl").dataTable({
-        lengthMenu: [[5, 10, -1], [5, 10, "All"]],
-        scrollX: ($(window).width())
-      });
+
+
       </script>
       <!---->
-
-
 
     </div>
   </div>

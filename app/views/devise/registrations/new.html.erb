@@ -1,4 +1,4 @@
-<div class="border-form-div">
+<div class="registration_form">
     <h2>Sign up</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -7,12 +7,12 @@
 
         <div class="field">
             <%= f.label :name %><br/>
-            <%= f.text_field :name, autofocus: true, :placeholder => 'Name',class: 'form-control' %>
+            <%= f.text_field :name, autofocus: true, :placeholder => 'Name' %>
         </div>
 
         <div class="field">
             <%= f.label :email %><br/>
-            <%= f.email_field :email, :placeholder => 'Email address' ,class: 'form-control'%>
+            <%= f.email_field :email, :placeholder => 'Email address' %>
         </div>
 
         <div class="field">
@@ -20,36 +20,36 @@
             <% if @minimum_password_length %>
                 <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %><br/>
-            <%= f.password_field :password, autocomplete: "off", :placeholder => 'Password' ,class: 'form-control'%>
+            <%= f.password_field :password, autocomplete: "off", :placeholder => 'Password' %>
         </div>
 
         <div class="field">
             <%= f.label :password_confirmation %><br/>
-            <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => 'Confirm Password' ,class: 'form-control'%>
+            <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => 'Confirm Password' %>
         </div>
 
         <div class="field">
             <%= f.label :address %><br/>
-            <%= f.text_area :address, :placeholder => 'Address',class: 'form-control' %>
+            <%= f.text_area :address, :placeholder => 'Address' %>
         </div>
 
         <div class="field">
             <%= f.label :landline_number %><br/>
-            <%= f.phone_field :landline_number, autofocus: true, :placeholder => 'Land Line Number' ,class: 'form-control'%>
+            <%= f.phone_field :landline_number, autofocus: true, :placeholder => 'Land Line Number' %>
         </div>
 
         <div class="field">
             <%= f.label :mobile_number %><br/>
-            <%= f.phone_field :mobile_number, autofocus: true, :placeholder => 'Mobile Number' ,class: 'form-control'%>
+            <%= f.phone_field :mobile_number, autofocus: true, :placeholder => 'Mobile Number' %>
         </div>
 
         <div class="field">
             <%= f.label :workplace %><br/>
-            <%= f.text_field :workplace, :placeholder => 'Workplace',class: 'form-control' %>
+            <%= f.text_field :workplace, :placeholder => 'Workplace' %>
         </div>
 
         <div class="actions">
-            <%= f.submit "Sign up", :class => 'btn btn-primary' %>
+            <%= f.submit "Sign up" %>
         </div>
 
     <% end %>

@@ -1,5 +1,11 @@
-<div class="banner">
-  <div class="container">
+<div class="">
+  <div class="container ">
+    <% Offer.all.each do |offer| %>
+        <div class="jumbotron">
+          <h1><%= offer.title %></h1>
+          <p><%= offer.description %></p>
+        </div>
+    <% end %>
   </div>
 </div>
 <!---->
@@ -17,28 +23,28 @@
   <div class="container">
     <h3>Featured Products</h3>
     <div class="feature-grids">
-      <%@featured_products.each do |product| %>
-      <div class="col-md-3 feature-grid jewel">
-        <a href="<%= product_path(product) %>">
-          <% if product.photo_file_name %>
-              <%= image_tag product.photo.url %>
-          <% else %>
-              <img src="/client/images/pills.png"/>
-          <% end %>
-          <div class="arrival-info">
-            <h4><%= product.name %></h4>
-            <p>population price :<%= product.price_population %> L.E</p>
-            <p>pharmacy price :<%= product.price_pharmacy %> L.E</p>
-          </div>
-          <div class="viw">
+      <% @featured_products.each do |product| %>
+          <div class="col-md-3 feature-grid jewel">
             <a href="<%= product_path(product) %>">
-              <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-              Quick View
+              <% if product.photo_file_name %>
+                  <%= image_tag product.photo.url %>
+              <% else %>
+                  <img src="/client/images/pills.png"/>
+              <% end %>
+              <div class="arrival-info">
+                <h4><%= product.name %></h4>
+                <p>population price :<%= product.price_population %> L.E</p>
+                <p>pharmacy price :<%= product.price_pharmacy %> L.E</p>
+              </div>
+              <div class="viw">
+                <a href="<%= product_path(product) %>">
+                  <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                  Quick View
+                </a>
+              </div>
+
             </a>
           </div>
-
-        </a>
-      </div>
       <% end %>
       <div class="clearfix"></div>
     </div>

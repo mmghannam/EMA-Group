@@ -1,9 +1,11 @@
-<div class="">
-  <div class="container ">
+<div class="container"> <!-- Add banner class to add background picture -->
+  <div id="owl">
     <% Offer.all.each do |offer| %>
         <div class="jumbotron">
-          <h1><%= offer.title %></h1>
-          <p><%= offer.description %></p>
+          <div class="text-center">
+            <h1><%= offer.title %></h1>
+            <p><%= offer.description %></p>
+          </div>
         </div>
     <% end %>
   </div>
@@ -131,3 +133,28 @@
   </div>
 </div>
 <!---->
+<script>
+  $(document).ready(function () {
+    $('#owl').owlCarousel({
+      center: true,
+      items: 1,
+      loop: true,
+      margin: 10,
+      nav: true,
+      navText: ["<", ">"]
+    });
+  });
+  //add mousewheel effect to carousel
+  //  $('#owl').on('mousewheel', '.owl-stage', function (e) {
+  //    if (e.deltaY>0) {
+  //      $('#owl').trigger('next.owl');
+  //    } else {
+  //      $('#owl').trigger('prev.owl');
+  //    }
+  //    e.preventDefault();
+  //  });
+
+</script>
+<style>
+
+</style>

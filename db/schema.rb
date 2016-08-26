@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160821195328) do
+ActiveRecord::Schema.define(version: 20160826124032) do
 
   create_table "carts", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -44,8 +44,9 @@ ActiveRecord::Schema.define(version: 20160821195328) do
     t.integer  "product_id", limit: 4
     t.integer  "quantity",   limit: 4
     t.integer  "cart_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.boolean  "placed",               default: false
   end
 
   create_table "products", force: :cascade do |t|

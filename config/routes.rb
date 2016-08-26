@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  get 'client/checkout'
+  post 'client/make_order' => 'client#make_order'
   get 'client/login'
   get 'client/sign_up'
   get 'static_pages/contact_us'

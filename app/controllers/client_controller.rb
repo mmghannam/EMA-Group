@@ -20,4 +20,9 @@ class ClientController < ApplicationController
     @parent_categories = Category.where(parent_id: nil)
   end
 
+  def checkout
+    @cart = Cart.find(params['cart_id'])
+    @orders = Cart.find(params['cart_id']).orders
+  end
+
 end

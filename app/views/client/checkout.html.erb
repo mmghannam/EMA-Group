@@ -1,0 +1,71 @@
+<div class="checkout">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li class="active">Cart</li>
+    </ol>
+    <div class="col-md-9 product-price1">
+      <div class="check-out">
+        <div class=" cart-items">
+          <h3>My Shopping Bag (2)</h3>
+
+
+          <div class="in-check">
+            <ul class="unit">
+              <li><span>Item</span></li>
+              <li><span>Name</span></li>
+              <li><span>Pharmacy Price</span></li>
+              <li><span>Population Price</span></li>
+              <li><span>Quantity</span></li>
+              <li> </li>
+              <div class="clearfix"></div>
+            </ul>
+            <% @orders.each_with_index  do |order,index| %>
+
+                <ul class="cart-header-<%= index %>">
+
+                  <li class="ring-in"><a href="/client/single_product?product_id=<%= order.product_id %>">
+                    <% if Product.find(order.product_id).photo_file_name %>
+                        <%= image_tag Product.find(order.product_id).photo.url,style:'max-width:100px;
+                        max-height:100px' %>
+                    <% else %>
+                        <img src="/client/images/pills.png" style="max-width:100px;max-height:100px"/>
+                    <% end %>
+                  </a>
+                  </li>
+                  <li><span><%= Product.find(order.product_id).name %></span></li>
+                  <li><span><%= Product.find(order.product_id).price_pharmacy %></span></li>
+                  <li><span><%= Product.find(order.product_id).price_population %></span></li>
+                  <li><span><%= order.quantity %></span></li>
+                  <div class="close-<%= index %>"></div>
+                  <div class="clearfix"></div>
+                </ul>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 cart-total">
+
+      <h4 class="last-price">Pharmacy Total</h4>
+      <span class="total final"><%= @cart.sum_pharmacy %> L.E.</span>
+      <h4 class="last-price">Population Total</h4>
+      <span class="total final"><%= @cart.sum_population %> L.E.</span>
+      <div class="clearfix"></div>
+      <a class="order" href="#">Place Order</a>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function (c) {
+    <% @orders.each_with_index  do |order,index| %>
+    $('.close-  <%= index %>').on('click', function (c) {
+      $('.cart-header-<%= index %>').fadeOut('slow', function (c) {
+        $('.cart-header-<%= index %>').remove();
+      });
+    });
+    <% end %>
+  });
+</script>

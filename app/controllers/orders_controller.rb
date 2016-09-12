@@ -24,15 +24,36 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    user = User.find_by_id(order_params[:user_id])
+    if user and user.cart
+      cart_id = user.cart.id
+    else
+      cart = Cart.new(user_id: user.id)
+      if cart.save
+        cart_id = cart.id
+      end
+    end
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+    @order = Order.new(quantity: order_params[:quantity], cart_id: cart_id, product_id:
+        order_params[:product_id])
+    if not client_side
+      respond_to do |format|
+        if @order.save
+          format.html { redirect_to @order, notice: 'Order was successfully created.' }
+          format.json { render :show, status: :created, location: @order }
+        else
+          format.html { render :new }
+          format.json { render json: @order.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        if @order.save
+          format.html { redirect_to client_products_url, notice: 'Order of '+@order.quantity.to_s + ' '+ Product.find(@order.product_id).name+' was successfully created.' }
+          format.json { render :show, status: :created, location: @order }
+        else
+          format.html { redirect_to client_products_url, notice: 'Order was not created.' }
+        end
       end
     end
   end
@@ -62,13 +83,22 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def order_params
+    params.require(:order).permit(:product_id, :quantity, :cart_id, :user_id)
+  end
+
+  def client_side
+    if current_user and current_user.client?
+      true
+    else
+      false
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def order_params
-      params.require(:order).permit(:product_id, :quantity, :cart_id)
-    end
+  end
 end

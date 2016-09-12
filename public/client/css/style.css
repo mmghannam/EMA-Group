@@ -1549,14 +1549,15 @@ h3.ghj {
 }
 /*-- --*/
 /*--checkout--*/
-.close1,.close2,.close3,.close4{
+div[class^='close-']{
   background: url('../images/close.png') no-repeat 0px 0px;
   cursor: pointer;
   width: 28px;
   height: 28px;
-  position: absolute;
-    right: 0px;
-  top: 0px;
+  position: relative;
+	right: 0px;
+  bottom: 20px;
+	float:right;
   -webkit-transition: color 0.2s ease-in-out;
   -moz-transition: color 0.2s ease-in-out;
   -o-transition: color 0.2s ease-in-out;
@@ -1585,7 +1586,7 @@ ul.unit li {
 .checkout {
   padding:0em 0 6em 0;
 }
-ul.cart-header{
+ul[class^='cart-header-']{
  padding:1em;
 	background:#f8f8f8;
 	  border-bottom: 1px solid #ff5d56;
@@ -1604,14 +1605,14 @@ ul.cart-header3{
 padding:1em;
 	background:#f8f8f8;
 }
- ul.cart-header li, ul.cart-header1 li, ul.cart-header2 li, ul.cart-header3 li{
+ul[class^='cart-header-'] li, ul.cart-header1 li, ul.cart-header2 li, ul.cart-header3 li{
 	display:inline-block;
 
 	 width:20%;
 	  float:left;
 
 }
-ul.cart-header li span,ul.cart-header1 li span,ul.cart-header2 li span,ul.cart-header3 li span{
+ul[class^='cart-header-'] li span,ul.cart-header1 li span,ul.cart-header2 li span,ul.cart-header3 li span{
   margin: 2.3em 0 0;
   display: block;
   color: #767676;
@@ -2463,4 +2464,32 @@ a.add-cart {
 #products_tbl th,#products_tbl td {
 	/*min-width:150px;*/
 	/*max-width:150px;*/
+}
+
+.owl-carousel {
+	position: relative;
+}
+/*owl carousel nav styling */
+.owl-prev,
+.owl-next {
+	position: absolute;
+	top: 35%;
+	font-size: 3rem;
+	margin-top: -10px;
+	padding: 2rem;
+	background-color: #d5d5d5;
+	border-radius: 2px;
+
+}
+
+.owl-prev {
+	left: 0;
+}
+
+.owl-next {
+	right: 0;
+}
+
+.order-img img{
+	max-width:100px;
 }

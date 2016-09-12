@@ -13,6 +13,14 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def client_side
+        if current_user and current_user.client?
+            true
+        else
+            false
+        end
+    end
+
     protected
 
     def configure_devise_permitted_parameters

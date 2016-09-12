@@ -39,8 +39,7 @@ class OrdersController < ApplicationController
             end
         end
 
-        @order = Order.new(quantity: order_params[:quantity], cart_id: cart_id, product_id:
-            order_params[:product_id])
+        @order = Order.new(quantity: order_params[:quantity], cart_id: cart_id, product_id: order_params[:product_id])
         if not client_side
             respond_to do |format|
                 if @order.save
@@ -54,7 +53,8 @@ class OrdersController < ApplicationController
         else
             respond_to do |format|
                 if @order.save
-                    format.html { redirect_to client_products_url, notice: 'Order of '+@order.quantity.to_s + ' '+ Product.find(@order.product_id).name+' was successfully created.' }
+                    format.html { redirect_to client_products_url,
+                        notice: 'Order of '+ @order.quantity.to_s + ' ' + Product.find(@order.product_id).name + ' was successfully created.' }
                     format.json { render :show, status: :created, location: @order }
                 else
                     format.html { redirect_to client_products_url, notice: 'Order was not created.' }
@@ -98,11 +98,4 @@ class OrdersController < ApplicationController
         params.require(:order).permit(:product_id, :quantity, :cart_id, :user_id)
     end
 
-    def client_side
-        if current_user and current_user.client?
-            true
-        else
-            false
-        end
-    end
 end

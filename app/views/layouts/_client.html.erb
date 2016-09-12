@@ -80,13 +80,15 @@
         <div class="clearfix"></div>
       </div>
       <!---->
-      <% if current_user and current_user.cart %>
+
+      <% if current_user and  ( current_user.carts.where(placed:false).count > 0 )%>
+          <% cart = current_user.carts.where(placed:false)[0] %>
           <div class="cart box_1">
-            <a href="<%= client_checkout_path %>?cart_id=<%= current_user.cart.id %>">
+            <a href="<%= client_checkout_path %>?cart_id=<%= cart.id  %>">
               <h3>
                 <div class="total">
-                  <span class=""><%= current_user.cart.sum_population %> L.E</span>
-                  (<span  class=""><%= current_user.cart.orders.count %></span>)
+                  <span class=""><%=  cart.sum_population %> L.E</span>
+                  (<span  class=""><%=  cart.orders.count  %></span>)
                 </div>
                 <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></h3>
             </a>

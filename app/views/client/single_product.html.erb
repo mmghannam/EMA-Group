@@ -45,7 +45,7 @@
                   <p>pharmacy price: <%= @product.price_pharmacy %> L.E</p>
                 </strong>
               </li>
-              <a href="#">BUY NOW</a>
+
             </ul>
           </div>
 
@@ -63,68 +63,11 @@
 
 
     </div>
-    <div class="rsidebar span_1_of_left">
-      <section class="sky-form">
-        <div class="product_right">
-          <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Categories</h4>
-          <% counter = 0 %>
-          <% @parent_categories.each do |category| %>
-              <div class="tab<%= counter+=1 %>">
-                <ul class="place">
-                  <li class="sort"><%= category.name %></li>
-                  <li class="by"><img src="/client/images/do.png" alt=""></li>
-                  <div class="clearfix"></div>
-                </ul>
-                <div class="single-bottom">
-                  <% Category.where(parent_id: category.id).each do |child_category| %>
-                      <a href="#"><p><%= child_category.name %></p></a>
-                  <% end %>
-                </div>
-              </div>
-          <% end %>
-        </div>
 
-        <!--script-->
-        <script>
-          $(document).ready(function () {
-            <% outer_count = 1 %>
-            <% @parent_categories.each do |category| %>
-            $(".tab<%= outer_count %> .single-bottom").hide();
-            $(".tab<%= outer_count %> ul").click(function () {
-              <% inner_count=1 %>
-              <% @parent_categories.each do |category| %>
-              <%if outer_count == inner_count %>
-              $(".tab<%= inner_count %> .single-bottom").slideToggle(300);
-              <% else %>
-              $(".tab<%= inner_count %> .single-bottom").hide();
-              <% end %>
-              <% end %>
-            })
-            <% outer_count+=1 %>
-            <% end %>
-          });
-        </script>
-        <!-- script -->
+
+
       </section>
 
-      <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-      <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
-      <script type='text/javascript'>//<![CDATA[
-      $(window).load(function () {
-        $("#slider-range").slider({
-          range: true,
-          min: 0,
-          max: 400000,
-          values: [8500, 350000],
-          slide: function (event, ui) {
-            $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-          }
-        });
-        $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
-
-      });//]]>
-      </script>
-      <!---->
 
 
     </div>

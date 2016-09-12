@@ -25,8 +25,8 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     user = User.find_by_id(order_params[:user_id])
-    if user and user.cart
-      cart_id = user.cart.id
+    if user and user.carts.where(placed: false).count > 0
+      cart_id = user.carts.where(placed: false)[0].id
     else
       cart = Cart.new(user_id: user.id)
       if cart.save

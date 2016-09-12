@@ -4,7 +4,7 @@
       <li><a href="/">Home</a></li>
       <li class="active">Products</li>
     </ol>
-    <% if notice %>
+    <% if notice and notice.include?('Order') %>
         <% if not notice.include?('not') %>
             <div class="alert alert-success" role="alert">
               <%= notice %>
@@ -13,12 +13,10 @@
             <div class="alert alert-danger" role="alert">
               <%= notice %>
             </div>
-
         <% end %>
     <% end %>
     <h2>Our Products</h2>
     <div class="col-md-9 product-model-sec">
-
 
       <table class=" table-hover table table-striped table-bordered" id="products_tbl">
         <div class="table-header">
@@ -54,14 +52,15 @@
               <% if current_user and current_user.client? %>
                   <td>
                     <%= form_for(Order.new) do |f| %>
-                        <%= f.number_field :quantity , style:'margin-bottom:5px;'%>
+                        <%= f.number_field :quantity %>
                         <%= f.hidden_field :user_id, value: (current_user ? current_user.id : '') %>
                         <%= f.hidden_field :product_id, value: product.id %>
-                        <%= f.submit 'Add to Cart', style:'margin-left: 25%;'%>
+                        <%= f.submit 'Add to Cart' %>
                     <% end %>
                   </td>
               <% end %>
             </tr>
+
         <% end %>
         </tbody>
       </table>
@@ -146,8 +145,6 @@
 
         });
       });//]]>
-
-
       </script>
       <!---->
 
@@ -155,10 +152,3 @@
   </div>
 </div>
 </div>
-
-<script>
-  $(document).ready(function () {
-
-  })
-
-</script>

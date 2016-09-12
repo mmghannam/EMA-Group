@@ -23,6 +23,21 @@ class ClientController < ApplicationController
   def checkout
     @cart = Cart.find(params['cart_id'])
     @orders = Cart.find(params['cart_id']).orders
-  end
 
+    if params['checkout'] and params['user_id']
+      user = User.find(params['user_id'])
+      @cart.placed = true
+      user.carts << Cart.new
+      respond_to do |format|
+        if @cart.save
+          format.html { redirect_to '/client/checkout?cart_id='+@cart.id.to_s, notice: 'Order was successfully placed
+.' }
+        else
+          format.html { redirect_to '/client/checkout?cart_id='+@cart.id.to_s, notice: 'Order was not successfully
+placed
+.'  }
+        end
+      end
+    end
+  end
 end

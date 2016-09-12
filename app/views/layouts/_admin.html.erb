@@ -22,14 +22,17 @@
     <!-- Custom Fonts -->
     <%= stylesheet_link_tag "/admin/font-awesome/css/font-awesome.min.css" %>
 
-    <link rel="stylesheet" type="text/css" href="/lib/datatables/datatables.min.css"/>
+    <!-- datatable CSS -->
+    <%= stylesheet_link_tag "/lib/datatables/datatables.min.css" %>
+</head>
 
-    <script type="text/javascript" src="/lib/datatables/datatables.min.js"></script>
+<body>
 
-    <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.12/fc-3.2.2/fh-3.1.2/datatables.min.css"/>-->
+    <!-- Morris Charts JavaScript -->
+    <%= javascript_include_tag "/admin/js/plugins/morris/raphael.min.js" %>
 
-    <!--<script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.12/fc-3.2.2/fh-3.1.2/datatables.min.js"></script>-->
-
+    <!-- datatable JavaScript -->
+    <%= javascript_include_tag "/lib/datatables/datatables.min.js" %>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,9 +40,6 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-</head>
-
-<body>
 
     <div id="wrapper">
 
@@ -199,10 +199,6 @@
 
     </div>
     <!-- /#wrapper -->
-
-    <!-- Morris Charts JavaScript -->
-    <%= javascript_include_tag "/admin/js/plugins/morris/raphael.min.js" %>
-
 </body>
 
 </html>

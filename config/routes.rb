@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-    
+
     root 'client#default', :as => :root
 
     get 'client/login', :as => :client_login

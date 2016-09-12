@@ -22,7 +22,7 @@
             <% else %>
                 <td></td>
             <% end %>
-            <td><%= link_to category.name, {controller: 'categories', action: 'subcategories', parent_id: category.id} %></td>
+            <td><%= category.name %></td>
             <td><%= category.comments %></td>
             <td><%= category.photo_file_name %></td>
             <td>
@@ -38,8 +38,6 @@
                     :method => :delete,
                     :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
                     :class => 'btn btn-xs btn-danger' %>
-
-
             </td>
         </tr>
     <% end %>
@@ -49,3 +47,7 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
     new_category_path,
     :class => 'btn btn-primary' %>
+
+<script>
+    $(".table").dataTable();
+</script>

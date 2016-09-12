@@ -1,27 +1,46 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Carts</h1>
-
-<table>
-  <thead>
+<%- model_class = Cart -%>
+<div class="page-header">
+    <h1><%= t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+    <thead>
     <tr>
-      <th>User</th>
-      <th colspan="3"></th>
+        <th><%= model_class.human_attribute_name(:id) %></th>
+        <th><%= model_class.human_attribute_name(:user_id) %></th>
+        <th><%= model_class.human_attribute_name(:placed) %></th>
+        <th><%= model_class.human_attribute_name(:created_at) %></th>
+        <th><%= t '.actions', :default => t("helpers.actions") %></th>
     </tr>
-  </thead>
-
-  <tbody>
+    </thead>
+    <tbody>
     <% @carts.each do |cart| %>
-      <tr>
-        <td><%= cart.user_id %></td>
-        <td><%= link_to 'Show', cart %></td>
-        <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-        <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <tr>
+            <td><%= link_to cart.id, cart_path(cart) %></td>
+            <td><%= cart.user_id %></td>
+            <td><%= cart.placed %></td>
+            <td><%= l cart.created_at %></td>
+            <td>
+                <%= link_to 'Show Orders', orders_path(:cart_id => cart.id), :class => 'btn btn-xs btn-default' %>
+
+                <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                    edit_cart_path(cart), :class => 'btn btn-default btn-xs' %>
+
+                <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                    cart_path(cart),
+                    :method => :delete,
+                    :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                    :class => 'btn btn-xs btn-danger' %>
+            </td>
+        </tr>
     <% end %>
-  </tbody>
+    </tbody>
 </table>
 
-<br>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+    new_cart_path,
+    :class => 'btn btn-primary'
+%>
 
-<%= link_to 'New Cart', new_cart_path %>
+<script>
+    $(".table").dataTable();
+</script>

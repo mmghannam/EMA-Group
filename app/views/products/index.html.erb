@@ -19,7 +19,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= link_to product.id, product_path(product) %></td>
-        <td><%= product.category_id %></td>
+        <td><%= Category.find(product.category_id).name %></td>
         <td><%= product.name %></td>
         <td><%= product.price_pharmacy %></td>
         <td><%= product.price_population %></td>
@@ -43,3 +43,7 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_product_path,
             :class => 'btn btn-primary' %>
+
+<script>
+    $(".table").dataTable();
+</script>

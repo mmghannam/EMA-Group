@@ -2,73 +2,73 @@
 
     <% if @product.errors.any? %>
         <div id="error_expl" class="panel panel-danger">
-          <div class="panel-heading">
-            <h3 class="panel-title"><%= pluralize(@product.errors.count, "error") %> prohibited this product from being
-              saved:</h3>
-          </div>
-          <div class="panel-body">
-            <ul>
-              <% @product.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
+            <div class="panel-heading">
+                <h3 class="panel-title"><%= pluralize(@product.errors.count, "error") %> prohibited this product from
+                    being
+                    saved:</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <% @product.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
         </div>
     <% end %>
 
     <div class="form-group">
-      <%= f.label :category_id, :class => 'control-label col-lg-2' %>
-      <div class="col-lg-9">
-        <%= f.label :category_id, Category.find(params[:category_id]).name, :class => 'control-label' %>
-        <%= f.hidden_field :category_id,value: params[:category_id] %>
-      </div>
-      <%= f.error_span(:category_id) %>
+        <%= f.label :category_id, :class => 'control-label col-lg-2' %>
+        <div class="col-lg-9">
+            <%= f.collection_select :category_id, Category.all, :id, :name, {:value => params[:category_id]}, {:class => 'form-control'} %>
+        </div>
+        <%= f.error_span(:category_id) %>
     </div>
     <div class="form-group">
-      <%= f.label :name, :class => 'control-label col-lg-2' %>
-      <div class="col-lg-9">
-        <%= f.text_field :name, :class => 'form-control' %>
-      </div>
-      <%= f.error_span(:name) %>
+        <%= f.label :name, :class => 'control-label col-lg-2' %>
+        <div class="col-lg-9">
+            <%= f.text_field :name, :class => 'form-control' %>
+        </div>
+        <%= f.error_span(:name) %>
     </div>
     <div class="form-group">
-      <%= f.label :price_pharmacy, :class => 'control-label col-lg-2' %>
-      <div class="col-lg-9">
-        <%= f.text_field :price_pharmacy, :class => 'form-control' %>
-      </div>
-      <%= f.error_span(:price_pharmacy) %>
+        <%= f.label :price_pharmacy, :class => 'control-label col-lg-2' %>
+        <div class="col-lg-9">
+            <%= f.number_field :price_pharmacy, :class => 'form-control' %>
+        </div>
+        <%= f.error_span(:price_pharmacy) %>
     </div>
     <div class="form-group">
-      <%= f.label :price_population, :class => 'control-label col-lg-2' %>
-      <div class="col-lg-9">
-        <%= f.text_field :price_population, :class => 'form-control' %>
-      </div>
-      <%= f.error_span(:price_population) %>
+        <%= f.label :price_population, :class => 'control-label col-lg-2' %>
+        <div class="col-lg-9">
+            <%= f.number_field :price_population, :class => 'form-control' %>
+        </div>
+        <%= f.error_span(:price_population) %>
     </div>
     <div class="form-group">
-      <%= f.label :comments, :class => 'control-label col-lg-2' %>
-      <div class="col-lg-9">
-        <%= f.text_field :comments, :class => 'form-control' %>
-      </div>
-      <%= f.error_span(:comments) %>
+        <%= f.label :comments, :class => 'control-label col-lg-2' %>
+        <div class="col-lg-9">
+            <%= f.text_field :comments, :class => 'form-control' %>
+        </div>
+        <%= f.error_span(:comments) %>
     </div>
 
     <% if @product.photo_file_name %>
         <div class="form-group">
-          <%= f.label :photo, "Current Photo: ", :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= @product.photo_file_name %>
-          </div>
+            <%= f.label :photo, "Current Photo: ", :class => 'control-label col-lg-2' %>
+            <div class="col-lg-10">
+                <%= @product.photo_file_name %>
+            </div>
         </div>
     <% end %>
 
     <div class="form-group">
-      <div class="col-lg-offset-2 col-lg-9">
-        <%= f.submit nil, :class => 'btn btn-primary' %>
-        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                    products_path, :class => 'btn btn-default' %>
+        <div class="col-lg-offset-2 col-lg-9">
+            <%= f.submit nil, :class => 'btn btn-primary' %>
+            <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                products_path, :class => 'btn btn-default' %>
 
-      </div>
+        </div>
     </div>
 
 <% end %>

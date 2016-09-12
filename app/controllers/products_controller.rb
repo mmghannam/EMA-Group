@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
     # GET /products
     # GET /products.json
     def index
-
         # client shouldn't access 'admin/products'
         if current_user and current_user.position != 'admin' and request.original_url.include? '/admin/'
             redirect_to '/products'

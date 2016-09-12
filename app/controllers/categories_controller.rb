@@ -9,11 +9,12 @@ class CategoriesController < ApplicationController
             redirect_to '/categories'
         end
 
-        @categories = Category.where(parent_id: nil)
-    end
+        if params[:parent_id]
+            @categories = Category.where(:parent_id => params[:parent_id])
+        else
+            @categories = Category.where(:parent_id => nil)
+        end
 
-    def subcategories
-        @categories = Category.where(parent_id: params['parent_id'])
     end
 
     # GET /categories/1

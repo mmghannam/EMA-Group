@@ -28,11 +28,13 @@
             <td>
                 <%= link_to t('.edit', :default => t("helpers.links.edit")),
                     edit_category_path(category), :class => 'btn btn-default btn-xs' %>
-                <%= link_to 'Subcategories', {controller: 'categories', action: 'subcategories', parent_id: category.id}, {class: 'btn btn-xs btn-default'} %>
-                <%= link_to 'Add Product', {controller: 'products', action: 'new', category_id: category.id}, {class: 'btn
-          btn-xs btn-default'} %>
-                <%= link_to 'Products', {controller: 'products', action: 'index', category_id: category.id}, {class: 'btn
-          btn-xs btn-default'} %>
+
+                <%= link_to 'Subcategories', categories_path(:parent_id => category.id), {class: 'btn btn-xs btn-default'} %>
+
+                <%= link_to 'Add Product', new_product_path(:category_id => category.id), {class: 'btn btn-xs btn-default'} %>
+
+                <%= link_to 'Products', products_path(:category_id => category.id), {class: 'btn btn-xs btn-default'} %>
+
                 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                     category_path(category),
                     :method => :delete,

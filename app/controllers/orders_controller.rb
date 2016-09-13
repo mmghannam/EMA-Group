@@ -19,10 +19,12 @@ class OrdersController < ApplicationController
     # GET /orders/new
     def new
         @order = Order.new
+        @string = 'أضف'
     end
 
     # GET /orders/1/edit
     def edit
+        @string = 'تعديل'
     end
 
     # POST /orders

@@ -76,7 +76,7 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <h2>Orders</h2>
+                <h2>الطلبات</h2>
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover table-striped table-orders">
                         <thead>
@@ -95,7 +95,7 @@
                                 <td><%= Product.find(order.product_id).name %></td>
                                 <td><%= order.quantity %></td>
                                 <td><%= order.cart_id %></td>
-                                <td><%= order.created_at %></td>
+                                <td><%= l order.created_at %></td>
                             </tr>
                         <% end %>
                         </tbody>
@@ -103,7 +103,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <h2>Carts</h2>
+                <h2>المشتريات</h2>
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover table-striped table-carts">
                         <thead>
@@ -120,7 +120,7 @@
                                 <td><%= cart.id %></td>
                                 <td><%= User.find(cart.user_id).name %></td>
                                 <td><%= cart.placed %></td>
-                                <td><%= cart.created_at %></td>
+                                <td><%= l cart.created_at %></td>
                             </tr>
                         <% end %>
                         </tbody>
@@ -150,8 +150,8 @@
                                 <td><%= offer.id %></td>
                                 <td><%= offer.title %></td>
                                 <td><%= offer.description %></td>
-                                <td><%= offer.start %></td>
-                                <td><%= offer.end %></td>
+                                <td><%= l offer.start %></td>
+                                <td><%= l offer.end %></td>
                             </tr>
                         <% end %>
                         </tbody>
@@ -170,19 +170,34 @@
 <script>
     $(function () {
         $(".table-categories").dataTable({
-            "lengthMenu": [5, 10]
+            "lengthMenu": [5, 10],
+            "language": {
+                "url": "/lib/datatables/lang-ar.json"
+            }
         });
         $(".table-products").dataTable({
-            "lengthMenu": [5, 10]
+            "lengthMenu": [5, 10],
+            "language": {
+                "url": "/lib/datatables/lang-ar.json"
+            }
         });
         $(".table-orders").dataTable({
-            "lengthMenu": [5, 10]
+            "lengthMenu": [5, 10],
+            "language": {
+                "url": "/lib/datatables/lang-ar.json"
+            }
         });
         $(".table-carts").dataTable({
-            "lengthMenu": [5, 10]
+            "lengthMenu": [5, 10],
+            "language": {
+                "url": "/lib/datatables/lang-ar.json"
+            }
         });
         $(".table-offers").dataTable({
-            "lengthMenu": [5, 10]
+            "lengthMenu": [5, 10],
+            "language": {
+                "url": "/lib/datatables/lang-ar.json"
+            }
         });
     });
 </script>

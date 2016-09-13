@@ -17,15 +17,15 @@
     <% end %>
 
     <div class="form-group">
-        <%= f.label :user_id, :class => 'control-label col-lg-2' %>
-        <div class="col-lg-10">
+        <%= f.label 'المُستخدم', :class => 'control-label col-lg-2' %>
+        <div class="col-lg-5">
             <%= f.text_field :user_id, :class => 'form-control' %>
         </div>
         <%= f.error_span(:user_id) %>
     </div>
     <div class="form-group">
         <%= f.label :placed, :class => 'control-label col-lg-2' %>
-        <div class="col-lg-10">
+        <div class="col-lg-5">
             <select class="form-control" name="cart[placed]" id="cart_placed">
                 <option value="true"
                         <% if @cart.placed == true %> selected
@@ -42,9 +42,8 @@
 
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">
-            <%= f.submit nil, :class => 'btn btn-primary' %>
-            <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                carts_path, :class => 'btn btn-default' %>
+            <%= f.submit @string, :class => 'btn btn-primary' %>
+            <%= link_to 'إلغاء', carts_path, :class => 'btn btn-default' %>
         </div>
     </div>
 

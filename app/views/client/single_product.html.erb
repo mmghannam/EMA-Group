@@ -1,76 +1,74 @@
 <div class="single-sec">
-  <div class="container">
-    <ol class="breadcrumb">
-      <li><a href="index.html">Home</a></li>
-      <li class="active">Products</li>
-    </ol>
-    <!-- start content -->
-    <div class="col-md-9 det">
-      <div class="single_left">
-        <div class="flexslider">
-          <ul class="slides">
-            <li data-thumb="<%= @product.photo_file_name ? @product.photo_file_name :  '/client/images/pills.png' %>">
-              <% if @product.photo_file_name %>
-                  <%= image_tag @product.photo.url %>
-              <% else %>
-                  <img src="/client/images/pills.png"/>
-              <% end %>
-            </li>
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Products</li>
+        </ol>
+        <!-- start content -->
+        <div class="col-md-9 det">
+            <div class="single_left">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li data-thumb="<%= @product.photo_file_name ? @product.photo_file_name : '/client/images/pills.png' %>">
+                            <% if @product.photo_file_name %>
+                                <%= image_tag @product.photo.url %>
+                            <% else %>
+                                <img src="/client/images/pills.png"/>
+                            <% end %>
+                        </li>
 
-          </ul>
+                    </ul>
+                </div>
+                <!-- FlexSlider -->
+                <script defer src="/client/js/jquery.flexslider.js"></script>
+                <link rel="stylesheet" href="/client/css/flexslider.css" type="text/css" media="screen"/>
+
+                <script>
+                    // Can also be used with $(document).ready()
+                    $(window).load(function () {
+                        $('.flexslider').flexslider({
+                            animation: "slide",
+                            controlNav: "thumbnails"
+                        });
+                    });
+                </script>
+            </div>
+            <div class="single-right">
+                <h3><%= @product.name %></h3>
+                <div class="cost">
+                    <div class="prdt-cost">
+                        <ul>
+                            <li>Sellling Price:</li>
+                            <li>
+                                <strong>
+                                    <p>population price: <%= @product.price_population %> L.E</p>
+                                    <p>pharmacy price: <%= @product.price_pharmacy %> L.E</p>
+                                </strong>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="single-bottom1">
+                    <% if @product.comments %>
+                        <h6>Details</h6>
+                        <p class="prod-desc"><%= @product.comments %></p>
+                    <% end %>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+
         </div>
-        <!-- FlexSlider -->
-        <script defer src="/client/js/jquery.flexslider.js"></script>
-        <link rel="stylesheet" href="/client/css/flexslider.css" type="text/css" media="screen"/>
-
-        <script>
-          // Can also be used with $(document).ready()
-          $(window).load(function () {
-            $('.flexslider').flexslider({
-              animation: "slide",
-              controlNav: "thumbnails"
-            });
-          });
-        </script>
-      </div>
-      <div class="single-right">
-        <h3><%= @product.name %></h3>
-        <div class="cost">
-          <div class="prdt-cost">
-            <ul>
-              <li>Sellling Price:</li>
-              <li>
-                <strong>
-                  <p>population price: <%= @product.price_population %> L.E</p>
-                  <p>pharmacy price: <%= @product.price_pharmacy %> L.E</p>
-                </strong>
-              </li>
-
-            </ul>
-          </div>
-
-          <div class="clearfix"></div>
-        </div>
-
-        <div class="single-bottom1">
-          <% if @product.comments %>
-              <h6>Details</h6>
-              <p class="prod-desc"><%= @product.comments %></p>
-          <% end %>
-        </div>
-      </div>
-      <div class="clearfix"></div>
 
 
-    </div>
-
-
-
-      </section>
-
+        </section>
 
 
     </div>
     <div class="clearfix"></div>
-  </div>
+</div>
 </div>

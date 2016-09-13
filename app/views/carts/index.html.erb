@@ -1,29 +1,36 @@
 <%- model_class = Cart -%>
 <div class="page-header">
     <h1><%= t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+    <ol class="breadcrumb">
+        <li>
+            <i class="fa fa-dashboard"></i> <%= link_to 'Dashboard', :admin_dashboard %>
+        </li>
+        <li class="active">
+            <i class="fa fa-table"></i> Carts
+        </li>
+    </ol>
 </div>
 <table class="table table-striped">
     <thead>
     <tr>
-        <th><%= model_class.human_attribute_name(:id) %></th>
-        <th><%= model_class.human_attribute_name(:user_id) %></th>
+        <th>ID</th>
+        <th>المُستخدم</th>
         <th><%= model_class.human_attribute_name(:placed) %></th>
         <th><%= model_class.human_attribute_name(:created_at) %></th>
-        <th><%= t '.actions', :default => t("helpers.actions") %></th>
+        <th>الإجراءات</th>
     </tr>
     </thead>
     <tbody>
     <% @carts.each do |cart| %>
         <tr>
-            <td><%= link_to cart.id, cart_path(cart) %></td>
-            <td><%= cart.user_id %></td>
+            <td><%= cart.id %></td>
+            <td><%= User.find(cart.user_id).name %></td>
             <td><%= cart.placed %></td>
-            <td><%= l cart.created_at %></td>
+            <td><%= cart.created_at %></td>
             <td>
                 <%= link_to 'Show Orders', orders_path(:cart_id => cart.id), :class => 'btn btn-xs btn-default' %>
 
-                <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                    edit_cart_path(cart), :class => 'btn btn-default btn-xs' %>
+                <%= link_to 'تعديل', edit_cart_path(cart), :class => 'btn btn-xs btn-default' %>
 
                 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                     cart_path(cart),
@@ -36,10 +43,7 @@
     </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-    new_cart_path,
-    :class => 'btn btn-primary'
-%>
+<%= link_to 'New', new_cart_path, :class => 'btn btn-primary' %>
 
 <script>
     $(function () {

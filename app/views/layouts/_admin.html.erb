@@ -2,8 +2,6 @@
 <html lang="en">
 
 <head>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,11 +11,16 @@
 
     <title>EMA Group - Admin Dashboard</title>
 
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+
+    <!-- Bootstrap Core CSS RTL-->
+    <!-- ********************* Uncomment for RTL ********************* -->
+    <link href="/admin/css/bootstrap-rtl.min.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <%= stylesheet_link_tag "/admin/css/sb-admin.css" %>
-
-    <!-- Morris Charts CSS -->
-    <%= stylesheet_link_tag "/admin/css/plugins/morris.css" %>
+    <!-- ********************* Uncomment for RTL ********************* -->
+    <link href="/admin/css/sb-admin-rtl.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <%= stylesheet_link_tag "/admin/font-awesome/css/font-awesome.min.css" %>
@@ -28,8 +31,7 @@
 
 <body>
 
-    <!-- Morris Charts JavaScript -->
-    <%= javascript_include_tag "/admin/js/plugins/morris/raphael.min.js" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
     <!-- datatable JavaScript -->
     <%= javascript_include_tag "/lib/datatables/datatables.min.js" %>
@@ -53,96 +55,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <%= link_to 'Admin Dashboard', :admin_dashboard, :class => 'navbar-brand' %>
+                <%= link_to 'Admin Dashboard | EMA Group', :admin_dashboard, :class => 'navbar-brand' %>
             </div>
 
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i>
-                        <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong><%= current_user.name %></strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM
-                                        </p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>J<%= current_user.name %></strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM
-                                        </p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong><%= current_user.name %></strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM
-                                        </p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i>
-                        <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.name %>
                         <b class="caret"></b></a>
@@ -171,17 +88,23 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
+                    <li>
                         <%= link_to '<i class="fa fa-fw fa-dashboard"></i> Dashboard'.html_safe, :admin_dashboard %>
                     </li>
                     <li>
-                        <%= link_to '<i class="fa fa-fw fa-bar-chart-o"></i> Categories'.html_safe, :categories %>
+                        <%= link_to '<i class="fa fa-fw fa-table"></i> الأصناف'.html_safe, :categories %>
                     </li>
                     <li>
-                        <%= link_to '<i class="fa fa-fw fa-table"></i> Products'.html_safe, :products %>
+                        <%= link_to '<i class="fa fa-fw fa-table"></i> المنتجات'.html_safe, :products %>
                     </li>
                     <li>
-                        <%= link_to '<i class="fa fa-fw fa-edit"></i> Carts'.html_safe, :carts %>
+                        <%= link_to '<i class="fa fa-fw fa-table"></i> Orders'.html_safe, :orders %>
+                    </li>
+                    <li>
+                        <%= link_to '<i class="fa fa-fw fa-table"></i> Carts'.html_safe, :carts %>
+                    </li>
+                    <li>
+                        <%= link_to '<i class="fa fa-fw fa-table"></i> العروض'.html_safe, :offers %>
                     </li>
                 </ul>
             </div>
@@ -199,6 +122,20 @@
 
     </div>
     <!-- /#wrapper -->
+
+    <script>
+        $(function () {
+            var url = window.location.pathname;
+            var activePage = url.substring(url.lastIndexOf('/') + 1);
+            $('.nav li a').each(function () {
+                var currentPage = this.href.substring(this.href.lastIndexOf('/') + 1);
+
+                if (activePage == currentPage) {
+                    $(this).parent().addClass('active');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

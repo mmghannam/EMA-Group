@@ -1,24 +1,32 @@
 <%- model_class = Product -%>
 <div class="page-header">
-    <h1><%= t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+    <h1>المنتجات</h1>
+    <ol class="breadcrumb">
+        <li>
+            <i class="fa fa-dashboard"></i> <%= link_to 'Dashboard', :admin_dashboard %>
+        </li>
+        <li class="active">
+            <i class="fa fa-table"></i> المنتجات
+        </li>
+    </ol>
 </div>
 <table class="table table-striped">
     <thead>
     <tr>
-        <th><%= model_class.human_attribute_name(:id) %></th>
-        <th><%= model_class.human_attribute_name(:category_id) %></th>
-        <th><%= model_class.human_attribute_name(:name) %></th>
-        <th><%= model_class.human_attribute_name(:price_pharmacy) %></th>
-        <th><%= model_class.human_attribute_name(:price_population) %></th>
-        <th><%= model_class.human_attribute_name(:comments) %></th>
-        <th><%= model_class.human_attribute_name(:photo) %></th>
-        <th><%= t '.actions', :default => t("helpers.actions") %></th>
+        <th>ID</th>
+        <th>الصنف</th>
+        <th>الإسم</th>
+        <th>السعر للصيدليات</th>
+        <th>السعر للجمهور</th>
+        <th>التعليقات</th>
+        <th>الصورة</th>
+        <th>الإجراءات</th>
     </tr>
     </thead>
     <tbody>
     <% @products.each do |product| %>
         <tr>
-            <td><%= link_to product.id, product_path(product) %></td>
+            <td><%= product.id %></td>
             <td><%= Category.find(product.category_id).name %></td>
             <td><%= product.name %></td>
             <td><%= product.price_pharmacy %></td>
@@ -27,8 +35,8 @@
             <td><%= product.photo_file_name %></td>
 
             <td>
-                <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                    edit_product_path(product), :class => 'btn btn-default btn-xs' %>
+                <%= link_to 'تعديل', edit_product_path(product), :class => 'btn btn-default btn-xs' %>
+
                 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                     product_path(product),
                     :method => :delete,
@@ -40,10 +48,7 @@
     </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-    new_product_path,
-    :class => 'btn btn-primary'
-%>
+<%= link_to 'أضف منتج', new_product_path, :class => 'btn btn-primary' %>
 
 <script>
     $(function () {

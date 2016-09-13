@@ -25,10 +25,12 @@ class CategoriesController < ApplicationController
     # GET /categories/new
     def new
         @category = Category.new
+        @string = 'أضف'
     end
 
     # GET /categories/1/edit
     def edit
+        @string = 'تعديل'
     end
 
     # POST /categories

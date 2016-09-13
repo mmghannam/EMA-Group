@@ -1,31 +1,38 @@
 <%- model_class = Offer -%>
 <div class="page-header">
-    <h1><%= t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+    <h1>العروض</h1>
+    <ol class="breadcrumb">
+        <li>
+            <i class="fa fa-dashboard"></i> <%= link_to 'Dashboard', :admin_dashboard %>
+        </li>
+        <li class="active">
+            <i class="fa fa-table"></i> العروض
+        </li>
+    </ol>
 </div>
 <table class="table table-striped">
     <thead>
     <tr>
-        <th><%= model_class.human_attribute_name(:id) %></th>
-        <th><%= model_class.human_attribute_name(:title) %></th>
-        <th><%= model_class.human_attribute_name(:description) %></th>
-        <th><%= model_class.human_attribute_name(:start) %></th>
-        <th><%= model_class.human_attribute_name(:end) %></th>
+        <th>ID</th>
+        <th>العنوان</th>
+        <th>الشرح</th>
+        <th>إبتداءًا من</th>
+        <th>إنتهاءًا في</th>
         <th><%= model_class.human_attribute_name(:created_at) %></th>
-        <th><%= t '.actions', :default => t("helpers.actions") %></th>
+        <th>الإجراءات</th>
     </tr>
     </thead>
     <tbody>
     <% @offers.each do |offer| %>
         <tr>
-            <td><%= link_to offer.id, offer_path(offer) %></td>
+            <td><%= offer.id %></td>
             <td><%= offer.title %></td>
             <td><%= offer.description %></td>
             <td><%= offer.start %></td>
             <td><%= offer.end %></td>
-            <td><%= l offer.created_at %></td>
+            <td><%= offer.created_at %></td>
             <td>
-                <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                    edit_offer_path(offer), :class => 'btn btn-default btn-xs' %>
+                <%= link_to 'تعديل', edit_offer_path(offer), :class => 'btn btn-xs btn-default' %>
 
                 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                     offer_path(offer),
@@ -38,10 +45,7 @@
     </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-    new_offer_path,
-    :class => 'btn btn-primary'
-%>
+<%= link_to 'أضف عرض', new_offer_path, :class => 'btn btn-primary' %>
 
 <script>
     $(function () {

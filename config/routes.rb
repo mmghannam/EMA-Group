@@ -9,14 +9,12 @@ Rails.application.routes.draw do
     get 'client/single_product', :as => :client_single_product
     get 'client/default', :as => :client_dashboard
     get 'admin/dashboard', :as => :admin_dashboard
-    get 'categories/subcategories' => 'categories#subcategories', :as => :subcategories
-    get 'static_pages/contact_us', :as => :contact_us
+    get 'contact_us' => 'static_pages#contact_us', :as => :contact_us
 
     post 'client/make_order' => 'client#make_order'
-    # post '/logout' => 'devise/sessions#destroy', :as => :destroy_user_session_custom
 
     scope '/admin' do
-        resources :categories, :products, :carts
+        resources :categories, :products, :carts, :orders, :offers
     end
 
     devise_for :users

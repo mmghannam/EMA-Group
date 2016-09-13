@@ -19,7 +19,7 @@
     <div class="form-group">
         <%= f.label :product_id, :class => 'control-label col-lg-2' %>
         <div class="col-lg-10">
-            <%= f.text_field :product_id, :class => 'form-control' %>
+            <%= f.collection_select :product_id, Product.all, :id, :name, {:value => :product_id}, {:class => 'form-control'} %>
         </div>
         <%= f.error_span(:product_id) %>
     </div>

@@ -1,17 +1,90 @@
 <%- model_class = Cart -%>
 <div class="page-header">
-    <h1><%= t '.title', :default => model_class.model_name.human.titleize %></h1>
+    <h1>الطلب رقم <%= @cart.id %></h1>
+    <ol class="breadcrumb">
+        <li>
+            <i class="fa fa-dashboard"></i> <%= link_to 'Dashboard', :admin_dashboard %>
+        </li>
+        <li>
+            <i class="fa fa-table"></i> <%= link_to 'الطلبات', carts_path%>
+        </li>
+        <li class="active">
+             الطلب رقم <%= @cart.id %>
+        </li>
+    </ol>
 </div>
 
 <dl class="dl-horizontal">
     <dt><strong>المُستخدم:</strong></dt>
-    <dd><%= User.find(@cart.user_id).name %></dd>
-    <dt><strong><%= model_class.human_attribute_name(:placed) %>:</strong></dt>
-    <dd><%= @cart.placed %></dd>
+    <dd>
+        <div class="row">
+            <br>
+            الرتبة: <%= @user.position %> <br>
+            الإسم: <%= @user.name %> <br>
+            العنوان: <%= @user.address %> <br>
+            الرقم الأرضي: <%= @user.landline_number %> <br>
+            رقم المحمول: <%= @user.mobile_number %> <br>
+            محل العمل: <%= @user.workplace %> <br>
+        </div>
+
+    </dd>
+
+    <hr>
+
+    <dt><strong>المُشترىات:</strong></dt>
+    <dd>
+        <br>
+        <div class="row">
+            <div class="col-lg-10">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>المنتج</th>
+                        <th>الكمية</th>
+                        <th>السعر للصيدليات</th>
+                        <th>السعر للجمهور</th>
+                        <th><%= model_class.human_attribute_name(:created_at) %></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% @orders.each do |order| %>
+                        <tr>
+                            <td><%= order.id %></td>
+                            <td><%= Product.find(order.product_id).name %></td>
+                            <td><%= order.quantity %></td>
+                            <td><%= order.price_pharmacy %></td>
+                            <td><%= order.price_population %></td>
+                            <td><%= l order.created_at %></td>
+                        </tr>
+                    <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </dd>
+
+    <hr>
+
+    <dt><strong>السعر الكُلّي للصيدليات:</strong></dt>
+    <dd><%= @cart.price_pharmacy %></dd>
+    <dt><strong>السعر الكُلّي للجمهور:</strong></dt>
+    <dd><%= @cart.price_population %></dd>
+
+    <hr>
+
 </dl>
 
+
 <%= link_to 'الرحوع', carts_path, :class => 'btn btn-default' %>
-<%= link_to 'تعديل', edit_cart_path(@cart), :class => 'btn btn-default' %>
-<%= link_to 'مسح', cart_path(@cart), :method => 'delete',
-    :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
-    :class => 'btn btn-danger' %>
+
+<script>
+    $(function () {
+        $(".table").dataTable({
+            "lengthMenu": [5, 10, 25],
+            "language": {
+                "url": "/lib/datatables/lang-ar.json"
+            }
+        });
+    });
+</script>

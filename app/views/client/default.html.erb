@@ -1,146 +1,146 @@
 <div id="owl" class="container">
-  <% Offer.all.each do |offer| %>
-      <div class="jumbotron">
-        <div class="text-center">
-          <h1 dir="rtl"><%= offer.title %></h1>
-          <p dir="rtl"><%= offer.description %></p>
+    <% Offer.all.each do |offer| %>
+        <div class="jumbotron">
+            <div class="text-center">
+                <h1 dir="rtl"><%= offer.title %></h1>
+                <p dir="rtl"><%= offer.description %></p>
+            </div>
         </div>
-      </div>
-  <% end %>
+    <% end %>
 </div>
 
 <!---->
 <div class="welcome">
-  <div class="container">
-    <div class="col-md-4"></div>
-    <div class="col-md-8 welcome-left">
-      <h2>Welcome to our site</h2>
+    <div class="container">
+        <div class="col-md-4"></div>
+        <div class="col-md-8 welcome-left">
+            <h2>Welcome to our site</h2>
+        </div>
     </div>
-  </div>
 </div>
 <!---->
 <div class="featured">
-  <div class="container">
-    <h3>Featured Products</h3>
-    <div class="feature-grids">
-      <% @featured_products.each do |product| %>
-          <div class="col-md-3 feature-grid jewel">
-            <div onclick="javascript:window
-                .location = '/client/single_product?product_id=<%= product.id %>'" style="cursor:pointer;">
-              <% if product.photo_file_name %>
-                  <%= image_tag product.photo.url %>
-              <% else %>
-                  <img src="/client/images/pills.png"/>
-              <% end %>
-              <div class="arrival-info">
-                <h4><%= product.name %></h4>
-                <p>population price :<%= product.price_population %> L.E</p>
-                <p>pharmacy price :<%= product.price_pharmacy %> L.E</p>
-              </div>
+    <div class="container">
+        <h3>Featured Products</h3>
+        <div class="feature-grids">
+            <% @featured_products.each do |product| %>
+                <div class="col-md-3 feature-grid jewel">
+                    <div onclick="javascript:window
+                        .location = '/client/single_product?product_id=<%= product.id %>'" style="cursor:pointer;">
+                        <% if product.photo_file_name %>
+                            <%= image_tag product.photo.url %>
+                        <% else %>
+                            <img src="/client/images/pills.png"/>
+                        <% end %>
+                        <div class="arrival-info">
+                            <h4><%= product.name %></h4>
+                            <p>population price :<%= product.price_population %> L.E</p>
+                            <p>pharmacy price :<%= product.price_pharmacy %> L.E</p>
+                        </div>
 
-            </div>
-          </div>
-      <% end %>
-      <div class="clearfix"></div>
+                    </div>
+                </div>
+            <% end %>
+            <div class="clearfix"></div>
+        </div>
     </div>
-  </div>
 </div>
 <!---->
 <div class="arrivals">
-  <div class="container">
-    <h3>New Arrivals</h3>
-    <div class="arrival-grids">
-      <ul id="flexiselDemo1">
-        <% @new_arrivals.each do |product| %>
-            <li>
-              <div onclick="javascript:window
-                  .location = '/client/single_product?product_id=<%= product.id %>'" style="cursor:pointer;">
-                <% if product.photo_file_name %>
-                    <%= image_tag product.photo.url %>
-                <% else %>
-                    <img src="/client/images/pills.png"/>
-                <% end %>
-                <div class="arrival-info">
-                  <h4><%= product.name %></h4>
-                  <p>population price :<%= product.price_population %> L.E</p>
-                  <p>pharmacy price :<%= product.price_pharmacy %> L.E</p>
-                </div>
+    <div class="container">
+        <h3>New Arrivals</h3>
+        <div class="arrival-grids">
+            <ul id="flexiselDemo1">
+                <% @new_arrivals.each do |product| %>
+                    <li>
+                        <div onclick="javascript:window
+                            .location = '/client/single_product?product_id=<%= product.id %>'" style="cursor:pointer;">
+                            <% if product.photo_file_name %>
+                                <%= image_tag product.photo.url %>
+                            <% else %>
+                                <img src="/client/images/pills.png"/>
+                            <% end %>
+                            <div class="arrival-info">
+                                <h4><%= product.name %></h4>
+                                <p>population price :<%= product.price_population %> L.E</p>
+                                <p>pharmacy price :<%= product.price_pharmacy %> L.E</p>
+                            </div>
 
-              </div>
-            </li>
-        <% end %>
-      </ul>
-      <script type="text/javascript">
-        $(window).load(function () {
-          $("#flexiselDemo1").flexisel({
-            visibleItems: 4,
-            animationSpeed: 1000,
-            autoPlay: true,
-            autoPlaySpeed: 3000,
-            pauseOnHover: true,
-            enableResponsiveBreakpoints: true,
-            responsiveBreakpoints: {
-              portrait: {
-                changePoint: 480,
-                visibleItems: 1
-              },
-              landscape: {
-                changePoint: 640,
-                visibleItems: 2
-              },
-              tablet: {
-                changePoint: 768,
-                visibleItems: 3
-              }
-            }
-          });
-        });
-      </script>
-      <script type="text/javascript" src="/client/js/jquery.flexisel.js"></script>
+                        </div>
+                    </li>
+                <% end %>
+            </ul>
+            <script type="text/javascript">
+                $(window).load(function () {
+                    $("#flexiselDemo1").flexisel({
+                        visibleItems: 4,
+                        animationSpeed: 1000,
+                        autoPlay: true,
+                        autoPlaySpeed: 3000,
+                        pauseOnHover: true,
+                        enableResponsiveBreakpoints: true,
+                        responsiveBreakpoints: {
+                            portrait: {
+                                changePoint: 480,
+                                visibleItems: 1
+                            },
+                            landscape: {
+                                changePoint: 640,
+                                visibleItems: 2
+                            },
+                            tablet: {
+                                changePoint: 768,
+                                visibleItems: 3
+                            }
+                        }
+                    });
+                });
+            </script>
+            <script type="text/javascript" src="/client/js/jquery.flexisel.js"></script>
+        </div>
     </div>
-  </div>
 </div>
 <!---->
 <div class="shoping">
-  <div class="container">
-    <div class="shpng-grids">
-      <div class="col-md-4 shpng-grid">
-        <h3>Free Shipping</h3>
-        <p>On Order Over Rs999</p>
-      </div>
-      <div class="col-md-4 shpng-grid">
-        <h3>Order Return</h3>
-        <p>Return Within 14days</p>
-      </div>
-      <div class="col-md-4 shpng-grid">
-        <h3>COD</h3>
-        <p>Cash On Delivery</p>
-      </div>
-      <div class="clearfix"></div>
+    <div class="container">
+        <div class="shpng-grids">
+            <div class="col-md-4 shpng-grid">
+                <h3>Free Shipping</h3>
+                <p>On Order Over Rs999</p>
+            </div>
+            <div class="col-md-4 shpng-grid">
+                <h3>Order Return</h3>
+                <p>Return Within 14days</p>
+            </div>
+            <div class="col-md-4 shpng-grid">
+                <h3>COD</h3>
+                <p>Cash On Delivery</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
     </div>
-  </div>
 </div>
 <!---->
 <script>
-  $(document).ready(function () {
-    $('#owl').owlCarousel({
-      center: true,
-      items: 1,
-      loop: true,
-      margin: 10,
-      nav: true,
-      navText: ["<", ">"]
+    $(document).ready(function () {
+        $('#owl').owlCarousel({
+            center: true,
+            items: 1,
+            loop: true,
+            margin: 10,
+            nav: true,
+            navText: ["<", ">"]
+        });
     });
-  });
-  //add mousewheel effect to carousel
-  //  $('#owl').on('mousewheel', '.owl-stage', function (e) {
-  //    if (e.deltaY>0) {
-  //      $('#owl').trigger('next.owl');
-  //    } else {
-  //      $('#owl').trigger('prev.owl');
-  //    }
-  //    e.preventDefault();
-  //  });
+    //add mousewheel effect to carousel
+    //  $('#owl').on('mousewheel', '.owl-stage', function (e) {
+    //    if (e.deltaY>0) {
+    //      $('#owl').trigger('next.owl');
+    //    } else {
+    //      $('#owl').trigger('prev.owl');
+    //    }
+    //    e.preventDefault();
+    //  });
 
 </script>
 <style>

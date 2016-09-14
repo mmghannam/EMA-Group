@@ -30,6 +30,7 @@ class CategoriesController < ApplicationController
 
     # GET /categories/1/edit
     def edit
+        return
         @string = 'تعديل'
     end
 

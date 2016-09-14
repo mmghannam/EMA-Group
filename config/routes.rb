@@ -14,16 +14,21 @@ Rails.application.routes.draw do
     post 'client/make_order' => 'client#make_order'
 
     scope '/admin' do
-        resources :categories, :products, :carts, :orders, :offers
+        resources :categories
+        resources :products
+        resources :carts, only: [:index, :show]
+        resources :orders, only: [:index, :show]
+        resources :offers
+        resources :users, only: [:index, :show]
     end
 
     devise_for :users
     resources :users
-    resources :offers
-    resources :categories
-    resources :products
-    resources :carts
-    resources :orders
+    # resources :categories
+    # resources :products
+    # resources :carts
+    # resources :orders
+    # resources :offers
 
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".

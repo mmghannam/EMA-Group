@@ -18,7 +18,6 @@
         <th>الشرح</th>
         <th>إبتداءًا من</th>
         <th>إنتهاءًا في</th>
-        <th><%= model_class.human_attribute_name(:created_at) %></th>
         <th>الإجراءات</th>
     </tr>
     </thead>
@@ -30,7 +29,6 @@
             <td><%= offer.description %></td>
             <td><%= l offer.start %></td>
             <td><%= l offer.end %></td>
-            <td><%= l offer.created_at %></td>
             <td>
                 <%= link_to 'تعديل', edit_offer_path(offer), :class => 'btn btn-xs btn-default' %>
 

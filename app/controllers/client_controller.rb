@@ -21,7 +21,7 @@ class ClientController < ApplicationController
     end
 
     def checkout
-        @cart = current_user.carts.where(placed:false)[0]
+        @cart = current_user.carts.where(placed: false)[0]
         @orders = @cart.orders
 
         if params['checkout'] and params['user_id']
@@ -39,5 +39,4 @@ class ClientController < ApplicationController
 
         end
     end
-
 end

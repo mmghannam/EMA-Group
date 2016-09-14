@@ -48,12 +48,12 @@
                                     <li><span><%= Product.find(order.product_id).price_population %></span></li>
                                     <li><span><%= order.quantity %></span></li>
                                     <div class="close-<%= index %>">
-                                      <%= button_to 'X',
-                                                  order_path(order),
-                                                  :method => 'delete',
-                                                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                                                  :class => 'btn btn-primary btn-sm' ,
-                                                  :style => 'color: #fff;background-color: #3276b1;border-color: #285e8e;'%>
+                                        <%= button_to 'X',
+                                            order_path(order),
+                                            :method => 'delete',
+                                            :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                                            :class => 'btn btn-primary btn-sm',
+                                            :style => 'color: #fff;background-color: #3276b1;border-color: #285e8e;' %>
                                     </div>
                                     <div class="clearfix"></div>
                                 </ul>

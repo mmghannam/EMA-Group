@@ -33,7 +33,7 @@
     <div class="form-group">
         <%= f.label :cart_id, :class => 'control-label col-lg-2' %>
         <div class="col-lg-5">
-            <%= f.collection_select :cart_id, Cart.all, :id, :id, {:value => params[:cart_id]}, {:class => 'form-control'} %>
+            <%= f.collection_select :cart_id, Cart.where(:placed => true), :id, :id, {:value => params[:cart_id]}, {:class => 'form-control'} %>
         </div>
         <%= f.error_span(:cart_id) %>
     </div>

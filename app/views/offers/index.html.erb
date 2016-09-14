@@ -1,55 +1,55 @@
 <%- model_class = Offer -%>
 <div class="page-header" dir="rtl ">
-    <h1>العروض</h1>
-    <ol class="breadcrumb">
-        <li>
-            <i class="fa fa-dashboard"></i> <%= link_to 'Dashboard', :admin_dashboard %>
-        </li>
-        <li class="active">
-            <i class="fa fa-table"></i> العروض
-        </li>
-    </ol>
+  <h1>العروض</h1>
+  <ol class="breadcrumb">
+    <li>
+      <i class="fa fa-dashboard"></i> <%= link_to 'Dashboard', :admin_dashboard %>
+    </li>
+    <li class="active">
+      <i class="fa fa-table"></i> العروض
+    </li>
+  </ol>
 </div>
-<table class="table table-striped"  >
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>العنوان</th>
-        <th>الشرح</th>
-        <th>إبتداءًا من</th>
-        <th>إنتهاءًا في</th>
-        <th>الإجراءات</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @offers.each do |offer| %>
-        <tr>
-            <td><%= offer.id %></td>
-            <td><%= offer.title %></td>
-            <td><%= offer.description %></td>
-            <td><%= offer.start %></td>
-            <td><%= offer.end %></td>
-            <td><%= offer.created_at %></td>
-            <td>
-                <%= link_to 'تعديل', edit_offer_path(offer), :class => 'btn btn-xs btn-default' %>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>العنوان</th>
+    <th>الشرح</th>
+    <th>إبتداءًا من</th>
+    <th>إنتهاءًا في</th>
+    <th>الإجراءات</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @offers.each do |offer| %>
+      <tr>
+        <td><%= offer.id %></td>
+        <td><%= offer.title %></td>
+        <td><%= offer.description %></td>
+        <td><%= offer.start ? (l offer.start) : '' %></td>
+        <td><%= offer.end ? (l offer.end) : '' %></td>
+        <td><%= l offer.created_at %></td>
+        <td>
+          <%= link_to 'تعديل', edit_offer_path(offer), :class => 'btn btn-xs btn-default' %>
 
-                <%= link_to 'مسح', offer_path(offer), :method => :delete,
-                    :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
-                    :class => 'btn btn-xs btn-danger' %>
-            </td>
-        </tr>
-    <% end %>
-    </tbody>
+          <%= link_to 'مسح', offer_path(offer), :method => :delete,
+                      :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
 </table>
 
 <%= link_to 'أضف عرض', new_offer_path, :class => 'btn btn-primary' %>
 
 <script>
-    $(function () {
-        $(".table").dataTable({
-            "language": {
-                "url": "/lib/datatables/lang-ar.json"
-            }
-        });
+  $(function () {
+    $(".table").dataTable({
+      "language": {
+        "url": "/lib/datatables/lang-ar.json"
+      }
     });
+  });
 </script>

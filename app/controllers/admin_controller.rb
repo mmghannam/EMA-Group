@@ -8,8 +8,8 @@ class AdminController < ApplicationController
 
         @categories = Category.all
         @products = Product.all
-        @orders = Order.all
-        @carts = Cart.all
+        @users = User.all
+        @carts = Cart.where(:placed => true)
         @offers = Offer.all
     end
 end

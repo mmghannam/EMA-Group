@@ -78,39 +78,11 @@
             <div class="col-lg-6">
                 <h2>الطلبات</h2>
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped table-orders">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>المنتج</th>
-                            <th>الكمية</th>
-                            <th>Cart</th>
-                            <th>Created</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <% @orders.each do |order| %>
-                            <tr>
-                                <td><%= order.id %></td>
-                                <td><%= Product.find(order.product_id).name %></td>
-                                <td><%= order.quantity %></td>
-                                <td><%= order.cart_id %></td>
-                                <td><%= l order.created_at %></td>
-                            </tr>
-                        <% end %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <h2>المشتريات</h2>
-                <div class="table-responsive">
                     <table class="table table-bordered table-hover table-striped table-carts">
                         <thead>
                         <tr>
                             <th>ID</th>
                             <th>المُستخدم</th>
-                            <th>Placed</th>
                             <th>Created at</th>
                         </tr>
                         </thead>
@@ -119,7 +91,6 @@
                             <tr>
                                 <td><%= cart.id %></td>
                                 <td><%= User.find(cart.user_id).name %></td>
-                                <td><%= cart.placed %></td>
                                 <td><%= l cart.created_at %></td>
                             </tr>
                         <% end %>
@@ -127,10 +98,6 @@
                     </table>
                 </div>
             </div>
-        </div>
-        <!-- /.row -->
-
-        <div class="row">
             <div class="col-lg-6">
                 <h2>العروض</h2>
                 <div class="table-responsive">
@@ -152,6 +119,41 @@
                                 <td><%= offer.description %></td>
                                 <td><%= l offer.start %></td>
                                 <td><%= l offer.end %></td>
+                            </tr>
+                        <% end %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>المُستخدمين</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped table-offers">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>الرتبة</th>
+                            <th>الإسم</th>
+                            <th>العنوان</th>
+                            <th>الرقم الأرضي</th>
+                            <th>رقم المحمول</th>
+                            <th>محل العمل</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% @users.each do |user| %>
+                            <tr>
+                                <td><%= link_to user.id, user_path(user) %></td>
+                                <td><%= user.position %></td>
+                                <td><%= user.name %></td>
+                                <td><%= user.address %></td>
+                                <td><%= user.landline_number %></td>
+                                <td><%= user.mobile_number %></td>
+                                <td><%= user.workplace %></td>
                             </tr>
                         <% end %>
                         </tbody>

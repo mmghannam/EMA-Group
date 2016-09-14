@@ -1,6 +1,17 @@
 <%- model_class = Product -%>
 <div class="page-header">
-    <h1>منتج</h1>
+    <h1>المنتج رقم <%= @product.id %></h1>
+    <ol class="breadcrumb">
+        <li>
+            <i class="fa fa-dashboard"></i> <%= link_to 'Dashboard', :admin_dashboard %>
+        </li>
+        <li>
+            <i class="fa fa-table"></i> <%= link_to 'المنتجات', products_path %>
+        </li>
+        <li class="active">
+            المنتج رقم <%= @product.id %>
+        </li>
+    </ol>
 </div>
 
 <dl class="dl-horizontal">

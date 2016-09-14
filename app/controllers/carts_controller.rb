@@ -4,12 +4,14 @@ class CartsController < ApplicationController
     # GET /carts
     # GET /carts.json
     def index
-        @carts = Cart.all
+        @carts = Cart.where(:placed => true)
     end
 
     # GET /carts/1
     # GET /carts/1.json
     def show
+        @orders = Order.where(:cart_id => @cart.id)
+        @user = User.find(@cart.user_id)
     end
 
     # GET /carts/new

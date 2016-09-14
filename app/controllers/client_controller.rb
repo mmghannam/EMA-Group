@@ -43,5 +43,4 @@ class ClientController < ApplicationController
   def offers
 
   end
-
 end

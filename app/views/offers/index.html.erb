@@ -1,5 +1,5 @@
 <%- model_class = Offer -%>
-<div class="page-header">
+<div class="page-header" dir="rtl ">
     <h1>العروض</h1>
     <ol class="breadcrumb">
         <li>
@@ -10,7 +10,7 @@
         </li>
     </ol>
 </div>
-<table class="table table-striped">
+<table class="table table-striped"  >
     <thead>
     <tr>
         <th>ID</th>
@@ -28,9 +28,9 @@
             <td><%= offer.id %></td>
             <td><%= offer.title %></td>
             <td><%= offer.description %></td>
-            <td><%= l offer.start %></td>
-            <td><%= l offer.end %></td>
-            <td><%= l offer.created_at %></td>
+            <td><%= offer.start %></td>
+            <td><%= offer.end %></td>
+            <td><%= offer.created_at %></td>
             <td>
                 <%= link_to 'تعديل', edit_offer_path(offer), :class => 'btn btn-xs btn-default' %>
 

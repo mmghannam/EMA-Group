@@ -1,15 +1,14 @@
-<div class="container"> <!-- Add banner class to add background picture -->
-  <div id="owl">
-    <% Offer.all.each do |offer| %>
-        <div class="jumbotron">
-          <div class="text-center">
-            <h1><%= offer.title %></h1>
-            <p><%= offer.description %></p>
-          </div>
+<div id="owl" class="container">
+  <% Offer.all.each do |offer| %>
+      <div class="jumbotron">
+        <div class="text-center">
+          <h1 dir="rtl"><%= offer.title %></h1>
+          <p dir="rtl"><%= offer.description %></p>
         </div>
-    <% end %>
-  </div>
+      </div>
+  <% end %>
 </div>
+
 <!---->
 <div class="welcome">
   <div class="container">
@@ -17,7 +16,6 @@
     <div class="col-md-8 welcome-left">
       <h2>Welcome to our site</h2>
     </div>
-
   </div>
 </div>
 <!---->
@@ -27,7 +25,8 @@
     <div class="feature-grids">
       <% @featured_products.each do |product| %>
           <div class="col-md-3 feature-grid jewel">
-            <a href="<%= product_path(product) %>">
+            <div onclick="javascript:window
+                .location = '/client/single_product?product_id=<%= product.id %>'" style="cursor:pointer;">
               <% if product.photo_file_name %>
                   <%= image_tag product.photo.url %>
               <% else %>
@@ -38,13 +37,8 @@
                 <p>population price :<%= product.price_population %> L.E</p>
                 <p>pharmacy price :<%= product.price_pharmacy %> L.E</p>
               </div>
-              <div class="viw">
-                <a href="<%= product_path(product) %>">
-                  <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                  Quick View
-                </a>
-              </div>
-            </a>
+
+            </div>
           </div>
       <% end %>
       <div class="clearfix"></div>
@@ -59,7 +53,8 @@
       <ul id="flexiselDemo1">
         <% @new_arrivals.each do |product| %>
             <li>
-              <a href="<%= product_path(product) %>">
+              <div onclick="javascript:window
+                  .location = '/client/single_product?product_id=<%= product.id %>'" style="cursor:pointer;">
                 <% if product.photo_file_name %>
                     <%= image_tag product.photo.url %>
                 <% else %>
@@ -70,14 +65,8 @@
                   <p>population price :<%= product.price_population %> L.E</p>
                   <p>pharmacy price :<%= product.price_pharmacy %> L.E</p>
                 </div>
-                <div class="viw">
-                  <a href="<%= product_path(product) %>">
-                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                    Quick View
-                  </a>
-                </div>
 
-              </a>
+              </div>
             </li>
         <% end %>
       </ul>
@@ -132,28 +121,3 @@
   </div>
 </div>
 <!---->
-<script>
-  $(document).ready(function () {
-    $('#owl').owlCarousel({
-      center: true,
-      items: 1,
-      loop: true,
-      margin: 10,
-      nav: true,
-      navText: ["<", ">"]
-    });
-  });
-  //add mousewheel effect to carousel
-  //  $('#owl').on('mousewheel', '.owl-stage', function (e) {
-  //    if (e.deltaY>0) {
-  //      $('#owl').trigger('next.owl');
-  //    } else {
-  //      $('#owl').trigger('prev.owl');
-  //    }
-  //    e.preventDefault();
-  //  });
-
-</script>
-<style>
-
-</style>

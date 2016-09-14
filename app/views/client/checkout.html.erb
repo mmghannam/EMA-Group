@@ -47,8 +47,14 @@
                                     <li><span><%= Product.find(order.product_id).price_pharmacy %></span></li>
                                     <li><span><%= Product.find(order.product_id).price_population %></span></li>
                                     <li><span><%= order.quantity %></span></li>
-                                    <div class="close-<%= index %>" method="delete"
-                                         onclick="window.location= '/orders/'+<%= order.id %>"></div>
+                                    <div class="close-<%= index %>">
+                                      <%= button_to 'X',
+                                                  order_path(order),
+                                                  :method => 'delete',
+                                                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                                                  :class => 'btn btn-primary btn-sm' ,
+                                                  :style => 'color: #fff;background-color: #3276b1;border-color: #285e8e;'%>
+                                    </div>
                                     <div class="clearfix"></div>
                                 </ul>
                             <% end %>
@@ -60,9 +66,9 @@
             <div class="col-md-3 cart-total">
 
                 <h4 class="last-price">Pharmacy Total</h4>
-                <span class="total final"><%= @cart.sum_pharmacy %> L.E.</span>
+                <span class="total final"><%= @cart.price_pharmacy %> L.E.</span>
                 <h4 class="last-price">Population Total</h4>
-                <span class="total final"><%= @cart.sum_population %> L.E.</span>
+                <span class="total final"><%= @cart.price_population %> L.E.</span>
                 <div class="clearfix"></div>
                 <a class="order"
                    href="/client/checkout?checkout=true&cart_id=<%= @cart.id %>&user_id=<%= current_user.id ? current_user.id : nil %>">

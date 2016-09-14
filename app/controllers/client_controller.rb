@@ -21,8 +21,8 @@ class ClientController < ApplicationController
     end
 
     def checkout
-        @cart = Cart.find(params['cart_id'])
-        @orders = Cart.find(params['cart_id']).orders
+        @cart = current_user.carts.where(placed:false)[0]
+        @orders = @cart.orders
 
         if params['checkout'] and params['user_id']
             user = User.find(params['user_id'])

@@ -1,6 +1,14 @@
 <%- model_class = Order -%>
 <div class="page-header">
     <h1>المُشترىات</h1>
+    <ol class="breadcrumb">
+        <li>
+            <i class="fa fa-dashboard"></i> <%= link_to 'Dashboard', :admin_dashboard %>
+        </li>
+        <li class="active">
+            <i class="fa fa-table"></i> المُشترىات
+        </li>
+    </ol>
 </div>
 <table class="table table-striped">
     <thead>

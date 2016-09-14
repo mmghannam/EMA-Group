@@ -6,7 +6,7 @@ class Cart < ActiveRecord::Base
         orderAll = orders()
         sum = 0
         orderAll.each do |order|
-            sum+=(Product.find(order.product_id).price_pharmacy * order.quantity)
+            sum += (Product.find(order.product_id).price_pharmacy * order.quantity)
         end
         return sum
     end
@@ -15,7 +15,7 @@ class Cart < ActiveRecord::Base
         orderAll = orders()
         sum = 0
         orderAll.each do |order|
-            sum+= (Product.find(order.product_id).price_population * order.quantity)
+            sum += (Product.find(order.product_id).price_population * order.quantity)
         end
         return sum
     end

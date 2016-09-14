@@ -1,6 +1,14 @@
 <%- model_class = Offer -%>
-<div class="page-header" dir="rtl">
+<div class="page-header">
     <h1>العروض</h1>
+    <ol class="breadcrumb">
+        <li>
+            <i class="fa fa-dashboard"></i> <%= link_to 'Dashboard', :admin_dashboard %>
+        </li>
+        <li class="active">
+            <i class="fa fa-table"></i> العروض
+        </li>
+    </ol>
 </div>
 <table class="table table-striped">
     <thead>

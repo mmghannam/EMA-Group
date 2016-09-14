@@ -1,6 +1,17 @@
 <%- model_class = Category -%>
 <div class="page-header">
     <h1>الصنف رقم <%= @category.id %></h1>
+    <ol class="breadcrumb">
+        <li>
+            <i class="fa fa-dashboard"></i> <%= link_to 'Dashboard', :admin_dashboard %>
+        </li>
+        <li>
+            <i class="fa fa-table"></i> <%= link_to 'الأصناف', admin_categories_path %>
+        </li>
+        <li class="active">
+            الصنف رقم <%= @category.id %>
+        </li>
+    </ol>
 </div>
 
 <dl class="dl-horizontal">

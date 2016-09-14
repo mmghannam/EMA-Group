@@ -4,7 +4,7 @@ class ClientController < ApplicationController
   #client/default:  home page
   def default
     @parent_categories = Category.where(parent_id: nil)
-    @featured_products = Product.find_by_sql('Select *,(select sum(quantity))from orders where orders
+    @featured_products = Product.find_by_sql('Select *,(select sum(quantity) from orders where orders
                                 .product_id = products.id) as sold_count   from products order by sold_count limit 4;')
     @new_arrivals = Product.order(created_at: :desc).limit(10)
   end

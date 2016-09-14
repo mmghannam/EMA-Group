@@ -19,11 +19,10 @@ Rails.application.routes.draw do
         resources :carts, only: [:index, :show]
         resources :orders, only: [:index]
         resources :offers
-        resources :users, only: [:index]
     end
 
     devise_for :users
-    resources :users
+    resources :users, only: [:index, :show]
     # resources :categories
     # resources :products
     # resources :carts

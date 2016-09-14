@@ -91,7 +91,7 @@
                             <tr>
                                 <td><%= cart.id %></td>
                                 <td><%= User.find(cart.user_id).name %></td>
-                                <td><%= l cart.created_at %></td>
+                                <td><%= cart.created_at %></td>
                             </tr>
                         <% end %>
                         </tbody>
@@ -117,8 +117,8 @@
                                 <td><%= offer.id %></td>
                                 <td><%= offer.title %></td>
                                 <td><%= offer.description %></td>
-                                <td><%= l offer.start %></td>
-                                <td><%= l offer.end %></td>
+                                <td><%= offer.start %></td>
+                                <td><%= offer.end %></td>
                             </tr>
                         <% end %>
                         </tbody>

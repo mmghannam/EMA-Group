@@ -121,3 +121,28 @@
   </div>
 </div>
 <!---->
+<script>
+  $(document).ready(function () {
+    $('#owl').owlCarousel({
+      center: true,
+      items: 1,
+      loop: true,
+      margin: 10,
+      nav: true,
+      navText: ["<", ">"]
+    });
+  });
+  //add mousewheel effect to carousel
+  //  $('#owl').on('mousewheel', '.owl-stage', function (e) {
+  //    if (e.deltaY>0) {
+  //      $('#owl').trigger('next.owl');
+  //    } else {
+  //      $('#owl').trigger('prev.owl');
+  //    }
+  //    e.preventDefault();
+  //  });
+
+</script>
+<style>
+
+</style>

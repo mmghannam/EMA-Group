@@ -19,34 +19,36 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @string = 'أضف'
   end
 
   # GET /orders/1/edit
   def edit
+    @string = 'تعديل'
   end
+end
 
-  # POST /orders
-  # POST /orders.json
-  def create
-    user = User.find_by_id(order_params[:user_id])
+# POST /orders
+# POST /orders.json
+def create
+  user = User.find_by_id(order_params[:user_id])
 
-    if user and user.carts.where(placed: false).count > 0
-      cart = user.carts.where(placed: false)[0]
+  if user and user.carts.where(placed: false).count > 0
+    cart = user.carts.where(placed: false)[0]
+    cart_id = cart.id
+  else
+    cart = Cart.new(user_id: user.id)
+    cart.price_pharmacy = 0
+    cart.price_population = 0
+    if cart.save
       cart_id = cart.id
-    else
-      cart = Cart.new(user_id: user.id)
-      cart.price_pharmacy = 0
-      cart.price_population = 0
-      if cart.save
-        cart_id = cart.id
-      end
     end
 
     @order = Order.new(quantity: order_params[:quantity], cart_id: cart_id, product_id: order_params[:product_id],
-                       price_population:(order_params[:quantity].to_i*Product.find(order_params[:product_id])
-                                                                      .price_population.to_f),
-                       price_pharmacy:(order_params[:quantity].to_i*Product.find(order_params[:product_id])
-                                                                     .price_pharmacy.to_f))
+                       price_population: (order_params[:quantity].to_i*Product.find(order_params[:product_id])
+                                                                           .price_population.to_f),
+                       price_pharmacy: (order_params[:quantity].to_i*Product.find(order_params[:product_id])
+                                                                         .price_pharmacy.to_f))
 
     if not client_side
       respond_to do |format|

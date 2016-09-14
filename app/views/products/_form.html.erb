@@ -65,10 +65,12 @@
         <%= f.file_field :photo, :class => 'form-control' %>
       </div>
       <%= f.error_span(:photo) %>
+
     </div>
 
     <% if @product.photo_file_name %>
         <div class="form-group">
+
           <%= f.label :photo, "الصورة الحالية", :class => 'control-label col-lg-2' %>
           <div class="col-lg-9">
             <%= @product.photo_file_name %>
@@ -80,7 +82,6 @@
       <div class="col-lg-offset-2 col-lg-9">
         <%= f.submit @string, :class => 'btn btn-primary' %>
         <%= link_to 'إلغاء', products_path, :class => 'btn btn-default' %>
-
       </div>
     </div>
 

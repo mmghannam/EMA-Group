@@ -15,10 +15,12 @@ class CartsController < ApplicationController
     # GET /carts/new
     def new
         @cart = Cart.new
+        @string = 'أضف'
     end
 
     # GET /carts/1/edit
     def edit
+        @string = 'تعديل'
     end
 
     # POST /carts

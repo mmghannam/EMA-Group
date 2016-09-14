@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
-  has_many :carts
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+    has_many :carts
+    # Include default devise modules. Others available are:
+    # :confirmable, :lockable, :timeoutable and :omniauthable
+    devise :database_authenticatable, :registerable,
+        :recoverable, :rememberable, :trackable, :validatable
 
-  enum position: [ :admin , :client]
+    enum position: [:admin, :client]
 
-  validates_presence_of :name,:address,:mobile_number,:workplace
+    validates_presence_of :name, :address, :mobile_number, :workplace
 end

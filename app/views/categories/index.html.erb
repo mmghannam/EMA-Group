@@ -38,9 +38,7 @@
 
                 <%= link_to 'المنتجات', products_path(:category_id => category.id), :class => 'btn btn-xs btn-default' %>
 
-                <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                    category_path(category),
-                    :method => :delete,
+                <%= link_to 'مسح', category_path(category), :method => :delete,
                     :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure ?'))},
                     :class => 'btn btn-xs btn-danger'
                 %>
@@ -54,6 +52,10 @@
 
 <script>
     $(function () {
-        $(".table").dataTable();
+        $(".table").dataTable({
+            "language": {
+                "url": "/lib/datatables/lang-ar.json"
+            }
+        });
     });
 </script>

@@ -1,11 +1,13 @@
 class AdminController < ApplicationController
-    def dashboard
-        if not current_user
-            redirect_to :root
-        elsif current_user.position != 'admin'
-            redirect_to :client_dashboard
-        end
+    before_action :admin_authenticated?
 
+    def admin_authenticated?
+        unless is_admin?
+            redirect_to :root
+        end
+    end
+
+    def dashboard
         @categories = Category.all
         @products = Product.all
         @users = User.all

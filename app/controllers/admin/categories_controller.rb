@@ -1,15 +1,10 @@
 module Admin
-    class CategoriesController < ApplicationController
+    class CategoriesController < AdminController
         before_action :set_category, only: [:show, :edit, :update, :destroy]
 
         # GET /categories
         # GET /categories.json
         def index
-            # client shouldn't access 'admin/categories'
-            if current_user and current_user.position != 'admin' and request.original_url.include? '/admin/'
-                redirect_to '/categories'
-            end
-
             if params[:parent_id]
                 @categories = Category.where(:parent_id => params[:parent_id])
             else
@@ -82,7 +77,7 @@ module Admin
 
         # Never trust parameters from the scary internet, only allow the white list through.
         def category_params
-            params.require(:category).permit(:parent_id, :name, :comments, :photo)
+            params.require(:admin_category).permit(:parent_id, :name, :comments, :photo)
         end
     end
 end

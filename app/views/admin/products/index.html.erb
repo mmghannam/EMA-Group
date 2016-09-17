@@ -1,12 +1,12 @@
-<%- model_class = Product -%>
+<%- model_class = Admin::Product -%>
 <div class="page-header">
-    <h1>المنتجات</h1>
+    <h1>الأصناف</h1>
     <ol class="breadcrumb">
         <li>
             <i class="fa fa-dashboard"></i> <%= link_to 'Dashboard', :admin_dashboard %>
         </li>
         <li class="active">
-            <i class="fa fa-table"></i> المنتجات
+            <i class="fa fa-table"></i> الأصناف
         </li>
     </ol>
 </div>
@@ -14,7 +14,7 @@
     <thead>
     <tr>
         <th>ID</th>
-        <th>الصنف</th>
+        <th>الفئة</th>
         <th>الإسم</th>
         <th>السعر للصيدليات</th>
         <th>السعر للجمهور</th>
@@ -46,7 +46,7 @@
     </tbody>
 </table>
 
-<%= link_to 'أضف منتج', new_admin_product_path, :class => 'btn btn-primary' %>
+<%= link_to 'أضف صنف', new_admin_product_path, :class => 'btn btn-primary' %>
 
 <script>
     $(function () {

@@ -1,21 +1,21 @@
-<%- model_class = Product -%>
+<%- model_class = Admin::Product -%>
 <div class="page-header">
-    <h1>المنتج رقم <%= @product.id %></h1>
+    <h1>الصنف رقم <%= @product.id %></h1>
     <ol class="breadcrumb">
         <li>
             <i class="fa fa-dashboard"></i> <%= link_to 'Dashboard', :admin_dashboard %>
         </li>
         <li>
-            <i class="fa fa-table"></i> <%= link_to 'المنتجات', admin_products_path %>
+            <i class="fa fa-table"></i> <%= link_to 'الأصناف', admin_products_path %>
         </li>
         <li class="active">
-            المنتج رقم <%= @product.id %>
+            الصنف رقم <%= @product.id %>
         </li>
     </ol>
 </div>
 
 <dl class="dl-horizontal">
-    <dt><strong>الصنف:</strong></dt>
+    <dt><strong>الفئة:</strong></dt>
     <dd><%= Category.find(@product.category_id).name %></dd>
     <dt><strong>الإسم:</strong></dt>
     <dd><%= @product.name %></dd>

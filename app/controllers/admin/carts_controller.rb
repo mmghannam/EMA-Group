@@ -1,5 +1,5 @@
 module Admin
-    class CartsController < ApplicationController
+    class CartsController < AdminController
         before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
         # GET /carts
@@ -60,7 +60,7 @@ module Admin
         def destroy
             @cart.destroy
             respond_to do |format|
-                format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
+                format.html { redirect_to admin_carts_url, notice: 'Cart was successfully destroyed.' }
                 format.json { head :no_content }
             end
         end
@@ -73,7 +73,7 @@ module Admin
 
         # Never trust parameters from the scary internet, only allow the white list through.
         def cart_params
-            params.require(:cart).permit(:user_id, :placed)
+            params.require(:admin_cart).permit(:user_id, :placed)
         end
     end
 end

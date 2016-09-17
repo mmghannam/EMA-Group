@@ -1,21 +1,21 @@
-<%- model_class = Category -%>
+<%- model_class = Admin::Category -%>
 <div class="page-header">
-    <h1>الصنف رقم <%= @category.id %></h1>
+    <h1>الفئة رقم <%= @category.id %></h1>
     <ol class="breadcrumb">
         <li>
             <i class="fa fa-dashboard"></i> <%= link_to 'Dashboard', :admin_dashboard %>
         </li>
         <li>
-            <i class="fa fa-table"></i> <%= link_to 'الأصناف', admin_categories_path %>
+            <i class="fa fa-table"></i> <%= link_to 'الفئات', admin_categories_path %>
         </li>
         <li class="active">
-            الصنف رقم <%= @category.id %>
+            الفئة رقم <%= @category.id %>
         </li>
     </ol>
 </div>
 
 <dl class="dl-horizontal">
-    <dt><strong>الصنف الأم:</strong></dt>
+    <dt><strong>الفئة الأم:</strong></dt>
     <dd><%= @category.parent_id %></dd>
     <dt><strong>الإسم:</strong></dt>
     <dd><%= @category.name %></dd>

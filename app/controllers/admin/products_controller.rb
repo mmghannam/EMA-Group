@@ -1,15 +1,10 @@
 module Admin
-    class ProductsController < ApplicationController
+    class ProductsController < AdminController
         before_action :set_product, only: [:show, :edit, :update, :destroy]
 
         # GET /products
         # GET /products.json
         def index
-            # client shouldn't access 'admin/products'
-            if current_user and current_user.position != 'admin' and request.original_url.include? '/admin/'
-                redirect_to '/products'
-            end
-
             if params[:category_id]
                 @products = Category.find(params[:category_id]).products
             else
@@ -81,7 +76,7 @@ module Admin
 
         # Never trust parameters from the scary internet, only allow the white list through.
         def product_params
-            params.require(:product).permit(:category_id, :name, :price_pharmacy, :price_population, :comments, :photo)
+            params.require(:admin_product).permit(:category_id, :name, :price_pharmacy, :price_population, :comments, :photo)
         end
     end
 end

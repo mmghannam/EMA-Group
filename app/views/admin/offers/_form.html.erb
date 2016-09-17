@@ -32,15 +32,32 @@
     </div>
     <div class="form-group">
         <%= f.label 'إبتداءًا من', :class => 'control-label col-lg-2' %>
+
         <div class="col-lg-5">
-            <%= f.text_field :start, :class => 'form-control' %>
+            <div class='input-group date' id='datetimepicker'>
+                <%= f.text_field :start, :class => 'form-control start-date' %>
+                <!--<input type='text' class="form-control" name="admin_offer[start]" id="admin_offer_start"/>-->
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
         </div>
+
+
         <%= f.error_span(:start) %>
     </div>
     <div class="form-group">
         <%= f.label 'إنتهاءًا في', :class => 'control-label col-lg-2' %>
         <div class="col-lg-5">
-            <%= f.text_field :end, :class => 'form-control' %>
+            <div class='input-group date' id='datetimepicker2'>
+                <%= f.text_field :end, :class => 'form-control end-date' %>
+                <!--<input type='text' class="form-control" name="admin_offer[end]" id="admin_offer_end"/>-->
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+
+
         </div>
         <%= f.error_span(:end) %>
     </div>
@@ -53,3 +70,14 @@
     </div>
 
 <% end %>
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+        $('#datetimepicker2').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+    });
+</script>

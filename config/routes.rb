@@ -8,10 +8,12 @@ Rails.application.routes.draw do
     get 'client/products', :as => :client_products
     get 'client/single_product', :as => :client_single_product
     get 'client/default', :as => :client_dashboard
-    get 'admin/dashboard', :as => :admin_dashboard
     get 'contact_us' => 'static_pages#contact_us', :as => :contact_us
 
     post 'client/make_order' => 'client#make_order'
+
+
+    get 'admin/dashboard', :as => :admin_dashboard
 
     namespace :admin do
         resources :categories
@@ -22,11 +24,11 @@ Rails.application.routes.draw do
     end
 
     devise_for :users
-    resources :users, only: [:index, :show]
-    resources :categories
-    resources :products
-    resources :carts
-    resources :orders
+    resources :users
+    # resources :categories
+    # resources :products
+    # resources :carts
+    # resources :orders
     resources :offers, only: [:index]
 
     # The priority is based upon order of creation: first created -> highest priority.

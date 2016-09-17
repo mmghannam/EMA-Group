@@ -17,7 +17,7 @@
     <% end %>
 
     <div class="form-group">
-        <%= f.label 'المنتج', :class => 'control-label col-lg-2' %>
+        <%= f.label 'الصنف', :class => 'control-label col-lg-2' %>
         <div class="col-lg-5">
             <%= f.collection_select :product_id, Product.all, :id, :name, {:value => :product_id}, {:class => 'form-control'} %>
         </div>

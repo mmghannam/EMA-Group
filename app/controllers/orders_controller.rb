@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
             price_pharmacy: (order_params[:quantity].to_i*Product.find(order_params[:product_id])
                                                               .price_pharmacy.to_f))
 
-        if not client_side
+        if not is_client?
             respond_to do |format|
                 if @order.save
                     format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -93,7 +93,7 @@ class OrdersController < ApplicationController
     # DELETE /orders/1.json
     def destroy
         @order.destroy
-        if client_side
+        if is_client?
             cart = current_user.carts.where(placed: false)[0]
             respond_to do |format|
                 cart.price_pharmacy = cart.sum_pharmacy

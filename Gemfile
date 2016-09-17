@@ -14,8 +14,15 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# IDK
+gem 'autoprefixer-rails'
+
 # Internationalization
 gem 'rails-i18n'
+
+# use bootstrap date picker
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
 
 # Use paperclip for file uploads
 gem 'paperclip'

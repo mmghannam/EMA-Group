@@ -6,19 +6,19 @@ class ApplicationController < ActionController::Base
     before_action :configure_devise_permitted_parameters, if: :devise_controller?
 
     def after_sign_in_path_for(user)
-        if user.position == 'admin'
+        if is_admin?
             :admin_dashboard
         else
             :client_dashboard
         end
     end
 
-    def client_side
-        if current_user and current_user.client?
-            true
-        else
-            false
-        end
+    def is_client?
+        current_user and current_user.client?
+    end
+
+    def is_admin?
+        current_user and current_user.admin?
     end
 
     protected

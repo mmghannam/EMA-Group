@@ -1,5 +1,5 @@
 module Admin
-    class OffersController < ApplicationController
+    class OffersController < AdminController
         before_action :set_offer, only: [:show, :edit, :update, :destroy]
 
         # GET /offers
@@ -45,6 +45,7 @@ module Admin
         def update
             respond_to do |format|
                 if @offer.update(offer_params)
+
                     format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
                     format.json { render :show, status: :ok, location: @offer }
                 else
@@ -72,7 +73,7 @@ module Admin
 
         # Never trust parameters from the scary internet, only allow the white list through.
         def offer_params
-            params.require(:offer).permit(:title, :description, :start, :end)
+            params.require(:admin_offer).permit(:title, :description, :start, :end)
         end
     end
 end

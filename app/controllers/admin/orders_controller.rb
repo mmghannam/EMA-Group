@@ -1,5 +1,5 @@
 module Admin
-    class OrdersController < ApplicationController
+    class OrdersController < AdminController
         before_action :set_order, only: [:show, :edit, :update, :destroy]
 
         # GET /orders
@@ -49,7 +49,7 @@ module Admin
                 price_pharmacy: (order_params[:quantity].to_i*Product.find(order_params[:product_id])
                                                                   .price_pharmacy.to_f))
 
-            if not client_side
+            if not is_client?
                 respond_to do |format|
                     if @order.save
                         format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -94,7 +94,7 @@ module Admin
         # DELETE /orders/1.json
         def destroy
             @order.destroy
-            if client_side
+            if is_client?
                 cart = current_user.carts.where(placed: false)[0]
                 respond_to do |format|
                     cart.price_pharmacy = cart.sum_pharmacy
@@ -119,7 +119,7 @@ module Admin
 
         # Never trust parameters from the scary internet, only allow the white list through.
         def order_params
-            params.require(:order).permit(:product_id, :quantity, :cart_id, :user_id)
+            params.require(:admin_order).permit(:product_id, :quantity, :cart_id, :user_id)
         end
 
     end

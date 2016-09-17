@@ -2,4 +2,82 @@
 <div class="page-header">
     <h1>تعديل صنف</h1>
 </div>
-<%= render :partial => 'form' %>
+<%= form_for @category,:url => url_for(:controller => 'admin/categories', :action => 'update'),:method => 'PATCH' ,:html =>
+    {:class =>
+         "form-horizontal category"} do |f| %>
+
+    <% if @category.errors.any? %>
+        <div id="error_expl" class="panel panel-danger">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= pluralize(@category.errors.count, "error") %> prohibited this category from
+              being saved:</h3>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <% @category.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+    <% end %>
+
+
+    <div class="form-group">
+      <%= f.label 'الصنف الأم', :class => 'control-label col-lg-2' %>
+      <div class="col-lg-5">
+        <%= f.collection_select :parent_id, Category.all, :id, :name, {:include_blank => 'No Parent', :value => :parent_id}, {:class => 'form-control'} %>
+      </div>
+      <%= f.error_span(:parent_id) %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label 'الإسم', :class => 'control-label col-lg-2' %>
+      <div class="col-lg-5">
+        <%= f.text_field :name, :class => 'form-control' %>
+      </div>
+      <%= f.error_span(:name) %>
+    </div>
+    <div class="form-group">
+      <%= f.label 'التعليقات', :class => 'control-label col-lg-2' %>
+      <div class="col-lg-5">
+        <%= f.text_field :comments, :class => 'form-control' %>
+      </div>
+      <%= f.error_span(:comments) %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label 'الصورة', :class => 'control-label col-lg-2' %>
+      <div class="col-lg-5">
+        <%= f.file_field :photo, :class => 'form-control' %>
+      </div>
+      <%= f.error_span(:photo) %>
+    </div>
+
+    <% if @category.photo_file_name %>
+        <div class="form-group">
+          <%= f.label :photo, "الصورة الحالية", :class => 'control-label col-lg-2' %>
+          <div class="col-lg-5">
+            <%= @category.photo_file_name %>
+          </div>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-5">
+        <%= f.submit @string, :class => 'btn btn-primary' %>
+        <%= link_to 'إلغاء', admin_categories_path, :class => 'btn btn-default' %>
+      </div>
+    </div>
+
+<% end %>
+
+<script>
+  $('#category_parent_id').selectpicker({
+    style: 'btn-default',
+    size: 4
+  });
+
+</script>
+
+

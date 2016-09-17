@@ -2,4 +2,60 @@
 <div class="page-header">
     <h1>تعديل عرض</h1>
 </div>
-<%= render :partial => 'form' %>
+<%= form_for @offer,:url => url_for(:controller => 'admin/offers', :action => 'update'),:method => 'PATCH' ,:html =>
+    {:class =>
+         "form-horizontal offer"} do |f| %>
+
+    <% if @offer.errors.any? %>
+        <div id="error_expl" class="panel panel-danger">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being
+              saved:</h3>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <% @offer.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label 'العنوان', :class => 'control-label col-lg-2' %>
+      <div class="col-lg-5">
+        <%= f.text_field :title, :class => 'form-control' %>
+      </div>
+      <%= f.error_span(:title) %>
+    </div>
+    <div class="form-group">
+      <%= f.label 'الشرح', :class => 'control-label col-lg-2' %>
+      <div class="col-lg-5">
+        <%= f.text_field :description, :class => 'form-control' %>
+      </div>
+      <%= f.error_span(:description) %>
+    </div>
+    <div class="form-group">
+      <%= f.label 'إبتداءًا من', :class => 'control-label col-lg-2' %>
+      <div class="col-lg-5">
+        <%= f.text_field :start, :class => 'form-control' %>
+      </div>
+      <%= f.error_span(:start) %>
+    </div>
+    <div class="form-group">
+      <%= f.label 'إنتهاءًا في', :class => 'control-label col-lg-2' %>
+      <div class="col-lg-5">
+        <%= f.text_field :end, :class => 'form-control' %>
+      </div>
+      <%= f.error_span(:end) %>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-5">
+        <%= f.submit @string, :class => 'btn btn-primary' %>
+        <%= link_to 'إلغاء', admin_offers_path, :class => 'btn btn-default' %>
+      </div>
+    </div>
+
+<% end %>

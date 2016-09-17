@@ -32,7 +32,7 @@ module Admin
             @cart = Cart.new(cart_params)
             respond_to do |format|
                 if @cart.save
-                    format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
+                    format.html { redirect_to admin_carts_url, notice: 'Cart was successfully created.' }
                     format.json { render :show, status: :created, location: @cart }
                 else
                     format.html { render :new }
@@ -46,7 +46,7 @@ module Admin
         def update
             respond_to do |format|
                 if @cart.update(cart_params)
-                    format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
+                    format.html { redirect_to admin_carts_url, notice: 'Cart was successfully updated.' }
                     format.json { render :show, status: :ok, location: @cart }
                 else
                     format.html { render :edit }
@@ -60,7 +60,7 @@ module Admin
         def destroy
             @cart.destroy
             respond_to do |format|
-                format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
+                format.html { redirect_to admin_carts_url, notice: 'Cart was successfully destroyed.' }
                 format.json { head :no_content }
             end
         end

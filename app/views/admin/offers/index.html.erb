@@ -27,8 +27,8 @@
             <td><%= offer.id %></td>
             <td><%= offer.title %></td>
             <td><%= offer.description %></td>
-            <td><%= l offer.start %></td>
-            <td><%= l offer.end %></td>
+            <td><%= offer.start ? (l offer.start) : '' %></td>
+            <td><%= offer.end ? (l offer.end) : '' %></td>
             <td>
                 <%= link_to 'تعديل', edit_admin_offer_path(offer), :class => 'btn btn-xs btn-default' %>
 

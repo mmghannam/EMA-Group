@@ -1,4 +1,5 @@
-<%= form_for @product, :html => {:class => "form-horizontal product"} do |f| %>
+<%= form_for @product,:url => url_for(:controller => 'admin/products', :action => 'create'), :html => {:class =>
+                                                                                                    "form-horizontal product"} do |f| %>
 
     <% if @product.errors.any? %>
         <div id="error_expl" class="panel panel-danger">
@@ -40,14 +41,14 @@
     <div class="form-group">
         <%= f.label 'السعر للصيدليات', :class => 'control-label col-lg-2' %>
         <div class="col-lg-9">
-            <%= f.number_field :price_pharmacy, :class => 'form-control' %>
+            <%= f.number_field :price_pharmacy, :class => 'form-control' , :step => 'any' %>
         </div>
         <%= f.error_span(:price_pharmacy) %>
     </div>
     <div class="form-group">
         <%= f.label 'السعر للجمهور', :class => 'control-label col-lg-2' %>
         <div class="col-lg-9">
-            <%= f.number_field :price_population, :class => 'form-control' %>
+            <%= f.number_field :price_population, :class => 'form-control' , :step => 'any' %>
         </div>
         <%= f.error_span(:price_population) %>
     </div>

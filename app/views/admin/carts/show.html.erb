@@ -1,6 +1,17 @@
 <%- model_class = Cart -%>
 <div class="page-header">
     <h1>الطلب رقم <%= @cart.id %></h1>
+    <ol class="breadcrumb">
+        <li>
+            <i class="fa fa-dashboard"></i> <%= link_to 'Dashboard', :admin_dashboard %>
+        </li>
+        <li>
+            <i class="fa fa-table"></i> <%= link_to 'الطلبات', admin_carts_path %>
+        </li>
+        <li class="active">
+            الطلب رقم <%= @cart.id %>
+        </li>
+    </ol>
 </div>
 
 <dl class="dl-horizontal">

@@ -30,15 +30,15 @@
             <td><%= category.comments %></td>
             <td><%= category.photo_file_name %></td>
             <td>
-                <%= link_to 'تعديل', edit_category_path(category), :class => 'btn btn-xs btn-default' %>
+                <%= link_to 'تعديل', edit_admin_category_path(category), :class => 'btn btn-xs btn-default' %>
 
-                <%= link_to 'الأصناف التابعة', categories_path(:parent_id => category.id), :class => 'btn btn-xs btn-default' %>
+                <%= link_to 'الأصناف التابعة', admin_categories_path(:parent_id => category.id), :class => 'btn btn-xs btn-default' %>
 
-                <%= link_to 'أضف منتج', new_product_path(:category_id => category.id), :class => 'btn btn-xs btn-default' %>
+                <%= link_to 'أضف منتج', new_admin_product_path(:category_id => category.id), :class => 'btn btn-xs btn-default' %>
 
-                <%= link_to 'المنتجات', products_path(:category_id => category.id), :class => 'btn btn-xs btn-default' %>
+                <%= link_to 'المنتجات', admin_products_path(:category_id => category.id), :class => 'btn btn-xs btn-default' %>
 
-                <%= link_to 'مسح', category_path(category), :method => :delete,
+                <%= link_to 'مسح', admin_category_path(category), :method => :delete,
                     :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure ?'))},
                     :class => 'btn btn-xs btn-danger'
                 %>
@@ -48,7 +48,7 @@
     </tbody>
 </table>
 
-<%= link_to 'أضف صنف', new_category_path, :class => 'btn btn-primary' %>
+<%= link_to 'أضف صنف', new_admin_category_path, :class => 'btn btn-primary' %>
 
 <script>
     $(function () {

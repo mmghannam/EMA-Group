@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :messages
     root 'client#default', :as => :root
 
     get 'client/login', :as => :client_login

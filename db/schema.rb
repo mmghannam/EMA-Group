@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914101756) do
+ActiveRecord::Schema.define(version: 20160920094337) do
 
   create_table "carts", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
     t.datetime "created_at",                                                          null: false
     t.datetime "updated_at",                                                          null: false
     t.boolean  "placed",                                              default: false
-    t.decimal  "price_pharmacy",             precision: 10, scale: 6, default: 0.0
-    t.decimal  "price_population",           precision: 10, scale: 6, default: 0.0
+    t.decimal  "price_pharmacy",             precision: 10, scale: 6
+    t.decimal  "price_population",           precision: 10, scale: 6
   end
 
   create_table "categories", force: :cascade do |t|
@@ -34,23 +34,35 @@ ActiveRecord::Schema.define(version: 20160914101756) do
     t.datetime "photo_updated_at"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text     "content",    limit: 65535
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "offers", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.text     "description", limit: 65535
+    t.string   "title",              limit: 255
+    t.text     "description",        limit: 65535
     t.date     "start"
     t.date     "end"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "photo_file_name",    limit: 255
+    t.string   "photo_content_type", limit: 255
+    t.integer  "photo_file_size",    limit: 4
+    t.datetime "photo_updated_at"
   end
 
   create_table "orders", force: :cascade do |t|
     t.integer  "product_id",       limit: 4
     t.integer  "quantity",         limit: 4
     t.integer  "cart_id",          limit: 4
-    t.datetime "created_at",                                                        null: false
-    t.datetime "updated_at",                                                        null: false
-    t.decimal  "price_population",           precision: 10, scale: 6, default: 0.0
-    t.decimal  "price_pharmacy",             precision: 10, scale: 6, default: 0.0
+    t.datetime "created_at",                                                          null: false
+    t.datetime "updated_at",                                                          null: false
+    t.boolean  "placed",                                              default: false
+    t.decimal  "price_population",           precision: 10, scale: 6
+    t.decimal  "price_pharmacy",             precision: 10, scale: 6
   end
 
   create_table "products", force: :cascade do |t|

@@ -1,205 +1,205 @@
 <div id="page-wrapper">
 
-    <div class="container-fluid">
+  <div class="container-fluid">
 
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    Dashboard
-                    <small>Overview</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li class="active">
-                        <i class="fa fa-dashboard"></i> Dashboard
-                    </li>
-                </ol>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <div class="row">
-            <div class="col-lg-6">
-                <h2>الفئات</h2>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped table-categories">
-                        <thead>
-                        <th>ID</th>
-                        <th>الفئة الأم</th>
-                        <th>الإسم</th>
-                        <th>التعليقات</th>
-                        </thead>
-                        <tbody>
-                        <% @categories.each do |category| %>
-                            <tr>
-                                <td><%= category.id %></td>
-                                <td><%= category.parent_id ? Category.find(category.parent_id).name : '' %></td>
-                                <td><%= category.name %></td>
-                                <td><%= category.comments %></td>
-                            </tr>
-                        <% end %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <h2>الأصناف</h2>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped table-products">
-                        <thead>
-                        <tr>
-                            <th> ID</th>
-                            <th>الفئة</th>
-                            <th>الإسم</th>
-                            <th>السعر للصيدليات</th>
-                            <th>السعر للجمهور</th>
-                            <th>التعليقات</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <% @products.each do |product| %>
-                            <tr>
-                                <td><%= product.id %></td>
-                                <td><%= Category.find(product.category_id).name %></td>
-                                <td><%= product.name %></td>
-                                <td><%= product.price_pharmacy %></td>
-                                <td><%= product.price_population %></td>
-                                <td><%= product.comments %></td>
-                            </tr>
-                        <% end %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <div class="row">
-            <div class="col-lg-6">
-                <h2>الطلبات</h2>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped table-carts">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>المُستخدم</th>
-                            <th>Created at</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <% @carts.each do |cart| %>
-                            <tr>
-                                <td><%= cart.id %></td>
-                                <td><%= User.find(cart.user_id).name %></td>
-                                <td><%= l cart.created_at %></td>
-                            </tr>
-                        <% end %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <h2>العروض</h2>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped table-offers">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>العنوان</th>
-                            <th>الشرح</th>
-                            <th>إبتداءًا من</th>
-                            <th>إنتهاءًا في</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <% @offers.each do |offer| %>
-                            <tr>
-                                <td><%= offer.id %></td>
-                                <td><%= offer.title %></td>
-                                <td><%= offer.description %></td>
-                                <td><%= l offer.start %></td>
-                                <td><%= l offer.end %></td>
-                            </tr>
-                        <% end %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <div class="row">
-            <div class="col-lg-6">
-                <h2>المُستخدمين</h2>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped table-offers">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>الرتبة</th>
-                            <th>الإسم</th>
-                            <th>العنوان</th>
-                            <th>الرقم الأرضي</th>
-                            <th>رقم المحمول</th>
-                            <th>محل العمل</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <% @users.each do |user| %>
-                            <tr>
-                                <td><%= link_to user.id, user_path(user) %></td>
-                                <td><%= user.position %></td>
-                                <td><%= user.name %></td>
-                                <td><%= user.address %></td>
-                                <td><%= user.landline_number %></td>
-                                <td><%= user.mobile_number %></td>
-                                <td><%= user.workplace %></td>
-                            </tr>
-                        <% end %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <!-- /.row -->
-
+    <!-- Page Heading -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">
+          Dashboard
+          <small>Overview</small>
+        </h1>
+        <ol class="breadcrumb">
+          <li class="active">
+            <i class="fa fa-dashboard"></i> Dashboard
+          </li>
+        </ol>
+      </div>
     </div>
-    <!-- /.container-fluid -->
+    <!-- /.row -->
+
+    <div class="row">
+      <div class="col-lg-6">
+        <h2>الفئات</h2>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-striped table-categories">
+            <thead>
+            <th>ID</th>
+            <th>الفئة الأم</th>
+            <th>الإسم</th>
+            <th>التعليقات</th>
+            </thead>
+            <tbody>
+            <% @categories.each do |category| %>
+                <tr>
+                  <td><%= category.id %></td>
+                  <td><%= category.parent_id ? Category.find(category.parent_id).name : '' %></td>
+                  <td><%= category.name %></td>
+                  <td><%= category.comments %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <h2>الأصناف</h2>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-striped table-products">
+            <thead>
+            <tr>
+              <th> ID</th>
+              <th>الفئة</th>
+              <th>الإسم</th>
+              <th>السعر للصيدليات</th>
+              <th>السعر للجمهور</th>
+              <th>التعليقات</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @products.each do |product| %>
+                <tr>
+                  <td><%= product.id %></td>
+                  <td><%= Category.find(product.category_id).name %></td>
+                  <td><%= product.name %></td>
+                  <td><%= product.price_pharmacy %></td>
+                  <td><%= product.price_population %></td>
+                  <td><%= product.comments %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+      <div class="col-lg-6">
+        <h2>الطلبات</h2>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-striped table-carts">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>المُستخدم</th>
+              <th>Created at</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @carts.each do |cart| %>
+                <tr>
+                  <td><%= cart.id %></td>
+                  <td><%= User.find(cart.user_id).name %></td>
+                  <td><%= l cart.created_at %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <h2>العروض</h2>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-striped table-offers">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>العنوان</th>
+              <th>الشرح</th>
+              <th>إبتداءًا من</th>
+              <th>إنتهاءًا في</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @offers.each do |offer| %>
+                <tr>
+                  <td><%= offer.id %></td>
+                  <td><%= offer.title %></td>
+                  <td><%= offer.description %></td>
+                  <td><%= offer.start ? (l offer.start) : '' %></td>
+                  <td><%= offer.end ? (l offer.end ) : '' %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+      <div class="col-lg-6">
+        <h2>المُستخدمين</h2>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-striped table-offers">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>الرتبة</th>
+              <th>الإسم</th>
+              <th>العنوان</th>
+              <th>الرقم الأرضي</th>
+              <th>رقم المحمول</th>
+              <th>محل العمل</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @users.each do |user| %>
+                <tr>
+                  <td><%= link_to user.id, user_path(user) %></td>
+                  <td><%= user.position %></td>
+                  <td><%= user.name %></td>
+                  <td><%= user.address %></td>
+                  <td><%= user.landline_number %></td>
+                  <td><%= user.mobile_number %></td>
+                  <td><%= user.workplace %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container-fluid -->
 
 </div>
 <!-- /#page-wrapper -->
 
 <script>
-    $(function () {
-        $(".table-categories").dataTable({
-            "lengthMenu": [5, 10],
-            "language": {
-                "url": "/lib/datatables/lang-ar.json"
-            }
-        });
-        $(".table-products").dataTable({
-            "lengthMenu": [5, 10],
-            "language": {
-                "url": "/lib/datatables/lang-ar.json"
-            }
-        });
-        $(".table-orders").dataTable({
-            "lengthMenu": [5, 10],
-            "language": {
-                "url": "/lib/datatables/lang-ar.json"
-            }
-        });
-        $(".table-carts").dataTable({
-            "lengthMenu": [5, 10],
-            "language": {
-                "url": "/lib/datatables/lang-ar.json"
-            }
-        });
-        $(".table-offers").dataTable({
-            "lengthMenu": [5, 10],
-            "language": {
-                "url": "/lib/datatables/lang-ar.json"
-            }
-        });
+  $(function () {
+    $(".table-categories").dataTable({
+      "lengthMenu": [5, 10],
+      "language": {
+        "url": "/lib/datatables/lang-ar.json"
+      }
     });
+    $(".table-products").dataTable({
+      "lengthMenu": [5, 10],
+      "language": {
+        "url": "/lib/datatables/lang-ar.json"
+      }
+    });
+    $(".table-orders").dataTable({
+      "lengthMenu": [5, 10],
+      "language": {
+        "url": "/lib/datatables/lang-ar.json"
+      }
+    });
+    $(".table-carts").dataTable({
+      "lengthMenu": [5, 10],
+      "language": {
+        "url": "/lib/datatables/lang-ar.json"
+      }
+    });
+    $(".table-offers").dataTable({
+      "lengthMenu": [5, 10],
+      "language": {
+        "url": "/lib/datatables/lang-ar.json"
+      }
+    });
+  });
 </script>

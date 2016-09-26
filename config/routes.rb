@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :messages
     root 'client#default', :as => :root
 
     get 'client/login', :as => :client_login
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
     # resources :categories
     # resources :products
     # resources :carts
-    # resources :orders
+    resources :orders
     resources :offers, only: [:index]
 
     # The priority is based upon order of creation: first created -> highest priority.

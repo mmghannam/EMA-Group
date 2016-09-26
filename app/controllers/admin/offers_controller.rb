@@ -60,7 +60,7 @@ module Admin
         def destroy
             @offer.destroy
             respond_to do |format|
-                format.html { redirect_to offers_url, notice: 'Offer was successfully destroyed.' }
+                format.html { redirect_to admin_offers_url, notice: 'Offer was successfully destroyed.' }
                 format.json { head :no_content }
             end
         end

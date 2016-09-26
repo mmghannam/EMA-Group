@@ -21,6 +21,12 @@ class ApplicationController < ActionController::Base
         current_user and current_user.admin?
     end
 
+    def admin_authenticated?
+        unless is_admin?
+            redirect_to :root
+        end
+    end
+
     protected
 
     def configure_devise_permitted_parameters

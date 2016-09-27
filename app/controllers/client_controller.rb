@@ -46,4 +46,7 @@ class ClientController < ApplicationController
 
         end
     end
+  def offers
+      @offers = Offer.all
+  end
 end

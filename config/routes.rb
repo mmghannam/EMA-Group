@@ -9,8 +9,9 @@ Rails.application.routes.draw do
     get 'client/products', :as => :client_products
     get 'client/single_product', :as => :client_single_product
     get 'client/default', :as => :client_dashboard
+    get 'client/offers'
     get 'contact_us' => 'static_pages#contact_us', :as => :contact_us
-
+    get 'static_pages/contact_us'
     post 'client/make_order' => 'client#make_order'
 
 

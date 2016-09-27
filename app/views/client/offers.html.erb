@@ -1,0 +1,36 @@
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li class="active">Offers</li>
+</ol>
+<div id="owl" class="container">
+  <% @offers.each do |offer| %>
+      <div class="jumbotron">
+        <div class="text-center">
+          <h1 dir="rtl"><%= offer.title %></h1>
+          <p dir="rtl"><%= offer.description %></p>
+        </div>
+      </div>
+  <% end %>
+</div>
+<script>
+  $(document).ready(function () {
+    $('#owl').owlCarousel({
+      center: true,
+      items: 1,
+      loop: true,
+      margin: 10,
+      nav: true,
+      navText: ["<", ">"]
+    });
+  });
+  //add mousewheel effect to carousel
+  //  $('#owl').on('mousewheel', '.owl-stage', function (e) {
+  //    if (e.deltaY>0) {
+  //      $('#owl').trigger('next.owl');
+  //    } else {
+  //      $('#owl').trigger('prev.owl');
+  //    }
+  //    e.preventDefault();
+  //  });
+
+</script>

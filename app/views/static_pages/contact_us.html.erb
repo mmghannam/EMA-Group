@@ -1,2 +1,52 @@
-<h1>StaticPages#contact_us</h1>
-<p>Find me in app/views/static_pages/contact_us.html.erb</p>
+<div class="contact">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li class="active">Contact</li>
+    </ol>
+    <% if notice and notice.include?('لقد') %>
+        <% if not notice.include?('عطل') %>
+            <div class="alert alert-success" role="alert" dir="rtl">
+              <%= notice %>
+            </div>
+        <% else %>
+            <div class="alert alert-danger" role="alert" dir="rtl">
+              <%= notice %>
+            </div>
+        <% end %>
+    <% end %>
+    <!---start-contact---->
+
+    <h3>  اتصل بنا  </h3>
+    <div class="section group">
+      <div class="col-md-6 span_1_of_3">
+        <div class="contact_info">
+          <h4>Find Us Here</h4>
+          <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d213.25538984643046!2d29.932808!3d31.2183401!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sar!2seg!4v1474933494466" width="100%" height="175" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 span_2_of_3">
+        <div class="contact-form">
+
+          <%= form_for(Message.new) do |f| %>
+              <div>
+              <%= f.text_area :content %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              </div><div>
+              <%= f.submit 'ارسل لنا',class:'mybutton' %>
+              </div>
+          <% end %>
+        </div>
+        <div class="company_address pull-right" dir="rtl">
+          <p>فرع سيدي بشر:</p>
+          <p>شارع عدنان مدني - سيدي بشر بحري</p>
+          <p>فرع سبورتنج:</p>
+          <p>8 شارع سيدي جابر  - سبورتنج الترام</p>
+          <p> تليفون:  03/3580085 - 03/3574957 </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -15,7 +15,6 @@ class ClientController < ApplicationController
     if params[:category_id]
       @parent_categories = Category.where(id: params[:category_id])
       @products = Category.find(params[:category_id]).products_of_children
-
     else
       @parent_categories = Category.where(parent_id: nil)
       @products = Product.all

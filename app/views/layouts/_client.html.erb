@@ -8,10 +8,11 @@
 
     <link href="/client/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <script src="/client/js/jquery.min.js"></script>
-    <link href="/client/css/owl.carousel.css" rel="stylesheet" type="text/css"/>
+  <script src="/client/owl-carousel/owl.carousel.js"></script>
+    <link href="/client/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="/client/owl-carousel/owl.theme.css" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="/lib/datatables/datatables.min.css"/>
-
     <script type="text/javascript" src="/lib/datatables/datatables.min.js"></script>
 
     <!-- Custom Theme files -->
@@ -74,7 +75,7 @@
         <div class="header-bottom">
             <div class="container">
                 <div class="logo">
-                    <a href="/"><h1>EMA-GROUP</h1></a>
+                    <a href="/"><h1><img src="/client/images/ema.jpg" style="width:20%"/>EMA-GROUP</h1></a>
                 </div>
                 <!---->
 
@@ -122,16 +123,16 @@
         </div>
     </div>
 </body>
-<script type="text/javascript" src="/client/js/owl.carousel.min.js"></script>
+
 <script>
     $(document).ready(function () {
-        $('#owl').owlCarousel({
-            items: 1,
-            loop: true,
-            margin: 10,
-            nav: true,
-            navText: ["<", ">"]
-        });
+//        $('#owl-home').owlCarousel({
+//            items: 1,
+//            loop: true,
+//            margin: 10,
+//            nav: true,
+//            navText: ["<", ">"]
+//        });
 
     });
     ////  add mousewheel effect to carousel

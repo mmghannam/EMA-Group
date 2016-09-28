@@ -196,7 +196,7 @@ h1.b1,h2.b2,h3.b3 {
 }
 .top-nav{
   margin-top: 0;
-  width:63%;
+  width:41%;
   margin: 1% auto 0;
   display: block;
   float: left;
@@ -2469,18 +2469,18 @@ a.add-cart {
 .owl-carousel {
 	position: relative;
 }
-/*owl carousel nav styling */
-.owl-prev,
-.owl-next {
-	position: absolute;
-	top: 35%;
-	font-size: 3rem;
-	margin-top: -10px;
-	padding: 2rem;
-	background-color: #d5d5d5;
-	border-radius: 2px;
+/*owl carousel custom nav styling */
+/*.owl-prev,*/
+/*.owl-next {*/
+	/*position: absolute;*/
+	/*top: 35%;*/
+	/*font-size: 3rem;*/
+	/*margin-top: -10px;*/
+	/*padding: 2rem;*/
+	/*background-color: #d5d5d5;*/
+	/*border-radius: 2px;*/
 
-}
+/*}*/
 
 .owl-prev {
 	left: 0;

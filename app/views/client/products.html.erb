@@ -15,10 +15,10 @@
             </div>
         <% end %>
     <% end %>
-    <h2>Our Products</h2>
+    <h2>منتجاتنا</h2>
     <div class="col-md-9 product-model-sec">
 
-      <table class=" table-hover table table-striped table-bordered" id="products_tbl" >
+      <table class=" table-hover table table-striped table-bordered" id="products_tbl">
         <div class="table-header">
           <thead>
           <tr class="heading-table">
@@ -56,7 +56,7 @@
               <% if current_user and current_user.client? %>
                   <td>
 
-                    <%= form_for Order.new, url: orders_path ,html: {method: 'post'} do |f| %>
+                    <%= form_for Order.new, url: orders_path, html: {method: 'post'} do |f| %>
                         <%= f.number_field :quantity %>
                         <%= f.hidden_field :user_id, value: (current_user ? current_user.id : '') %>
                         <%= f.hidden_field :product_id, value: product.id %>
@@ -70,11 +70,16 @@
         </tbody>
       </table>
 
+        <object data="/client/files/menu.pdf" type="application/pdf" width="100%" height="500px">
+          Your browser does not support pdfs, <a href="/client/files/menu.pdf">click here to
+          download the file.</a>
+        </object>
+
     </div>
-    <div class="rsidebar span_1_of_left">
+    <div class="rsidebar span_1_of_left ">
       <section class="sky-form">
         <div class="product_right">
-          <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Categories</h4>
+          <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>الفئات</h4>
           <% counter = 0 %>
           <% @parent_categories.each do |category| %>
               <div class="tab<%= counter+=1 %>">
@@ -145,9 +150,9 @@
             "language": {
               "url": "/lib/datatables/lang-ar.json"
             },
-            "fnInitComplete": function(){
-              $('#products_tbl_filter').attr('dir','rtl');
-              $('#products_tbl_info').attr('dir','rtl');
+            "fnInitComplete": function () {
+              $('#products_tbl_filter').attr('dir', 'rtl');
+              $('#products_tbl_info').attr('dir', 'rtl');
             }
           });
 

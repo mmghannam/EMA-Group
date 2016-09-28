@@ -1,4 +1,5 @@
-<%= form_for @order, :html => {:class => "form-horizontal order"} do |f| %>
+<%= form_for @order,:url => url_for(:controller => 'admin/orders', :action => 'create'),:method => 'POST' , :html => {:class =>
+                                                                                                           "form-horizontal order"} do |f| %>
 
     <% if @order.errors.any? %>
         <div id="error_expl" class="panel panel-danger">

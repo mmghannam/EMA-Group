@@ -31,7 +31,7 @@ module Admin
 
             respond_to do |format|
                 if @offer.save
-                    format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
+                    format.html { redirect_to admin_offers_url, notice: 'Offer was successfully created.' }
                     format.json { render :show, status: :created, location: @offer }
                 else
                     format.html { render :new }
@@ -45,8 +45,7 @@ module Admin
         def update
             respond_to do |format|
                 if @offer.update(offer_params)
-
-                    format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
+                    format.html { redirect_to admin_offers_url, notice: 'Offer was successfully updated.' }
                     format.json { render :show, status: :ok, location: @offer }
                 else
                     format.html { render :edit }

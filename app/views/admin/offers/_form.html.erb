@@ -1,4 +1,5 @@
-<%= form_for @offer, :html => {:class => "form-horizontal offer"} do |f| %>
+<%= form_for @offer,:url => url_for(:controller => 'admin/offers', :action => 'create') ,:method => 'POST' ,:html => {:class =>
+                                                                                                  "form-horizontal offer"} do |f| %>
 
     <% if @offer.errors.any? %>
         <div id="error_expl" class="panel panel-danger">

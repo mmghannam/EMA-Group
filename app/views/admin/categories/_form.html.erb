@@ -1,4 +1,5 @@
-<%= form_for @category, :html => {:class => "form-horizontal category"} do |f| %>
+<%= form_for @category,:url => url_for(:controller => 'admin/categories', :action => 'create'),:method => 'POST' , :html => {:class =>
+"form-horizontal category"} do |f| %>
 
     <% if @category.errors.any? %>
         <div id="error_expl" class="panel panel-danger">

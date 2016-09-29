@@ -34,7 +34,11 @@
             <td><%= user.mobile_number %></td>
             <td><%= user.workplace %></td>
             <td>
-                <%= link_to 'عرض التفاصيل', user_path(user), :class => 'btn btn-default' %>
+                <%= link_to 'عرض التفاصيل', user_path(user), :class => 'btn btn-xs btn-default' %>
+                <%= link_to 'تعديل', edit_user_path(user), :class => 'btn btn-xs btn-default' %>
+                <%= link_to 'مسح', user_path(user), :method => :delete,
+                    :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                    :class => 'btn btn-xs btn-danger' %>
             </td>
         </tr>
     <% end %>

@@ -15,7 +15,7 @@
     <% @messages.each do |message| %>
       <tr>
         <td><%= message.content %></td>
-        <td><%= User.find(message.user_id).name %></td>
+        <td><%= message.user_id == 0 ? 'غير مسجل' : User.find(message.user_id).name %></td>
         <td><%=l message.created_at %></td>
         <td>
           <%= link_to 'مسح',

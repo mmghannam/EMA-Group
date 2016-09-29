@@ -25,7 +25,6 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(message_params)
-    if is_client?
       respond_to do |format|
         if @message.save
           format.html { redirect_to static_pages_contact_us_path, notice: 'لقد تم بعث الرسالة بنجاح' }
@@ -33,16 +32,6 @@ class MessagesController < ApplicationController
           format.html { redirect_to static_pages_contact_us_path, notice: 'لقد حدث عطل فني نرجو اعادة المحاولة' }
         end
       end
-    else
-      respond_to do |format|
-        if @message.save
-          format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        else
-          format.html { render :new }
-          format.json { render json: @message.errors, status: :unprocessable_entity }
-        end
-      end
-    end
 
   end
 

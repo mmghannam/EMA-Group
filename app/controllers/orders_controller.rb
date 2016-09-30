@@ -65,10 +65,11 @@ class OrdersController < ApplicationController
                     cart.price_population = cart.sum_population
                     cart.save
                     format.html { redirect_to client_products_url,
-                        notice: 'Order of '+ @order.quantity.to_s + ' ' + Product.find(@order.product_id).name + ' was successfully created.' }
+                        notice: 'تمت الإضافة بنجاح' }
                     format.json { render :show, status: :created, location: @order }
                 else
-                    format.html { redirect_to client_products_url, notice: 'Order was not created.' }
+                    format.html { redirect_to client_products_url, notice:
+                        'حدثت مشكلة في الإضافة نرجو المحاولة مرة أخرى' }
                 end
             end
         end

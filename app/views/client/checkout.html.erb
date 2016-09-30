@@ -4,30 +4,29 @@
             <li><a href="/">الرئيسية</a></li>
             <li class="active">حقيبة المشتريات</li>
         </ol>
-        <% if notice and notice.include?('Order') %>
-            <% if not notice.include?('not') %>
-                <div class="alert alert-success" role="alert">
-                    <%= notice %>
-                </div>
-            <% else %>
-                <div class="alert alert-danger" role="alert">
-                    <%= notice %>
-                </div>
-
-            <% end %>
-        <% end %>
+      <% if notice and notice.include?('إضافة') %>
+          <% if not notice.include?('مشكلة') %>
+              <div class="alert alert-success" role="alert" dir="rtl">
+                <%= notice %>
+              </div>
+          <% else %>
+              <div class="alert alert-danger" role="alert"  dir="rtl">
+                <%= notice %>
+              </div>
+          <% end %>
+      <% end %>
         <% if current_user.carts.where(placed: false)[0].orders.count != 0 %>
             <div class="col-md-9 product-price1">
                 <div class="check-out">
                     <div class=" cart-items">
                         <div class="in-check">
 
-                            <ul class="unit">
-                                <li><span>Item</span></li>
-                                <li><span>Name</span></li>
-                                <li><span>Pharmacy Price</span></li>
-                                <li><span>Population Price</span></li>
-                                <li><span>Quantity</span></li>
+                            <ul class="unit" >
+                                <li><span></span></li>
+                                <li><span>الاسم</span></li>
+                                <li><span>سعر الصيدليات</span></li>
+                                <li><span >سعر الجمهور</span></li>
+                                <li ><span >الكمية</span></li>
                                 <li></li>
                                 <div class="clearfix"></div>
                             </ul>
@@ -63,21 +62,22 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 cart-total">
+            <div class="col-md-3 cart-total" >
 
-                <h4 class="last-price">Pharmacy Total</h4>
+                <h4 class="last-price pull-right" >السعر الكلي للصيدليات</h4>
                 <span class="total final"><%= @cart.price_pharmacy %> L.E.</span>
-                <h4 class="last-price">Population Total</h4>
+              <div class="clearfix"></div>
+                <h4 class="last-price pull-right">السعر الكلي للجمهور</h4>
                 <span class="total final"><%= @cart.price_population %> L.E.</span>
                 <div class="clearfix"></div>
                 <a class="order"
                    href="/client/checkout?checkout=true&cart_id=<%= @cart.id %>&user_id=<%= current_user.id ? current_user.id : nil %>">
-                    Place Order
+                    أطلب الآن
                 </a>
             </div>
         <% else %>
             <div class="container">
-                <h1 class="text-center">Cart is Empty.</h1>
+                <h1 class="text-center">لا توجد مشتريات</h1>
             </div>
         <% end %>
     </div>

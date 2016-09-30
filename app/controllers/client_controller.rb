@@ -38,9 +38,10 @@ class ClientController < ApplicationController
 
       respond_to do |format|
         if @cart.save
-          format.html { redirect_to '/client/checkout?cart_id='+@cart.id.to_s, notice: 'Order was successfully placed.' }
+          format.html { redirect_to '/client/checkout?cart_id='+@cart.id.to_s, notice: 'تمت إضافة الطلبية بنجاح' }
         else
-          format.html { redirect_to '/client/checkout?cart_id='+@cart.id.to_s, notice: 'Order was not successfully placed.' }
+          format.html { redirect_to '/client/checkout?cart_id='+@cart.id.to_s, notice:
+              'حدثت مشكلة في إضافة الطلبية نرجو إعادة المحاولة' }
         end
       end
 
@@ -50,5 +51,6 @@ class ClientController < ApplicationController
   def offers
     @offers = Offer.all
   end
+
 end
 

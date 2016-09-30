@@ -8,7 +8,7 @@
 
     <link href="/client/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <script src="/client/js/jquery.min.js"></script>
-  <script src="/client/owl-carousel/owl.carousel.js"></script>
+    <script src="/client/owl-carousel/owl.carousel.js"></script>
     <link href="/client/owl-carousel/owl.carousel.css" rel="stylesheet">
     <link href="/client/owl-carousel/owl.theme.css" rel="stylesheet">
 
@@ -49,21 +49,21 @@
             <div class="header_top-sec">
                 <div class="top_right">
                     <ul>
-                        <li><%= link_to 'Home', :root %></li>
+                        <li><%= link_to 'الرئيسية', :root %></li>
                         |
-                        <li><%= link_to 'Contact Us', :contact_us %></li>
+                        <li><%= link_to 'تواصل معنا', :contact_us %></li>
                     </ul>
                 </div>
                 <div class="top_left">
                     <ul>
                         <% if current_user %>
-                            <li class="top_link"><%= 'My Account' %></li>
-                            |
-                            <li class="top_link"><%= link_to 'Log out',
+                            <li class="top_link"><%= link_to 'خروج',
                                 controller: 'devise/sessions', action: 'destroy', id: current_user.id
                             %></li>
                         <% else %>
-                            <li class="top_link"><%= link_to 'Sign In', new_user_session_path %></li>
+                            <li class="top_link"><%= link_to 'دخول', new_user_session_path %></li>
+                          |
+                          <li><%= link_to 'التسجيل', new_user_registration_path %></li>
                         <% end %>
                     </ul>
                 </div>
@@ -81,10 +81,10 @@
 
                 <div class="top-nav">
                     <ul class="memenu skyblue">
-                        <li class="active"><a href="/">Home</a></li>
-                        <li class="grid"><a href="<%= client_products_path %>">Products</a></li>
-                        <li class="grid"><%= link_to 'Offers', client_offers_path %></li>
-                        <li class="grid"><%= link_to 'Contact', :contact_us %></li>
+                        <li class="active"><a href="/">الرئيسية</a></li>
+                        <li class="grid"><a href="<%= client_products_path %>">المنتجات</a></li>
+                        <li class="grid"><%= link_to 'العروض', client_offers_path %></li>
+                        <li class="grid"><%= link_to 'تواصل معنا', :contact_us %></li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>

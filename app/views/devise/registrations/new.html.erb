@@ -1,60 +1,63 @@
-<div class="registration_form">
-    <h2>Sign up</h2>
+<div class="container">
+  <ol class="breadcrumb">
+    <li><a href="index.html">الرئيسية</a></li>
+    <li class="active">التسجيل</li>
+  </ol>
+  <div class="registration_form" dir="rtl" >
+    <h2>التسجيل</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
 
 
         <div class="field">
-            <%= f.label :name %><br/>
-            <%= f.text_field :name, autofocus: true, :placeholder => 'Name' %>
+          <%= f.label :name,'الاسم' %><br/>
+          <%= f.text_field :name, autofocus: true, :placeholder => 'الاسم' %>
         </div>
 
         <div class="field">
-            <%= f.label :email %><br/>
-            <%= f.email_field :email, :placeholder => 'Email address' %>
+          <%= f.label :email,'البريد الالكتروني' %><br/>
+          <%= f.email_field :email, :placeholder => 'البريد الالكتروني' %>
         </div>
 
         <div class="field">
-            <%= f.label :password %>
-            <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
-            <% end %><br/>
-            <%= f.password_field :password, autocomplete: "off", :placeholder => 'Password' %>
+          <%= f.label :password,'كلمة السر' %>
+          <% if @minimum_password_length %>
+              <em > (<%= @minimum_password_length %> حروف كحد أدنى)</em>
+          <% end %><br/>
+          <%= f.password_field :password, autocomplete: "off", :placeholder => 'كلمة السر' %>
         </div>
 
         <div class="field">
-            <%= f.label :password_confirmation %><br/>
-            <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => 'Confirm Password' %>
+          <%= f.label :password_confirmation,'تأكيد كلمة السر' %><br/>
+          <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => 'تأكيد كلمة السر' %>
         </div>
 
         <div class="field">
-            <%= f.label :address %><br/>
-            <%= f.text_area :address, :placeholder => 'Address' %>
+          <%= f.label :address,'العنوان' %><br/>
+          <%= f.text_area :address, :placeholder => 'العنوان' %>
         </div>
 
         <div class="field">
-            <%= f.label :landline_number %><br/>
-            <%= f.phone_field :landline_number, autofocus: true, :placeholder => 'Land Line Number' %>
+          <%= f.label :landline_number,'الهاتف الأرضي' %><br/>
+          <%= f.phone_field :landline_number, autofocus: true, :placeholder => 'الهاتف الأرضي' %>
         </div>
 
         <div class="field">
-            <%= f.label :mobile_number %><br/>
-            <%= f.phone_field :mobile_number, autofocus: true, :placeholder => 'Mobile Number' %>
+          <%= f.label :mobile_number,'الهاتف المحمول' %><br/>
+          <%= f.phone_field :mobile_number, autofocus: true, :placeholder => 'الهاتف المحمول' %>
         </div>
 
         <div class="field">
-            <%= f.label :workplace %><br/>
-            <%= f.text_field :workplace, :placeholder => 'Workplace' %>
+          <%= f.label :workplace,'مكان العمل' %><br/>
+          <%= f.text_field :workplace, :placeholder => 'مكان العمل' %>
         </div>
 
         <div class="actions">
-            <%= f.submit "Sign up" %>
+          <%= f.submit "سجل" %>
         </div>
 
     <% end %>
 
-    <%= render "devise/shared/links" %>
+  </div>
 </div>
-
-
